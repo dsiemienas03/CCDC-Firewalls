@@ -1,3 +1,4 @@
+team_num: 70
 # Whiteteam IPs
 mask_white: "10.120.0.0/24"
 proxy_white: "10.120.0.200"
@@ -5,7 +6,7 @@ ntp_white: "10.120.0.10"
 dns_white: "10.120.0.53"
 phone_white: "10.120.0.100"
 ccs_white: "10.120.0.111"
-# local devices
+# Local IPs
 local_ip: "10.{{ team_num }}.{{ team_num }}."
 local_mask: "10.{{ team_num }}.{{ team_num }}.0/24"
 local_dns: "10"
@@ -13,3 +14,6 @@ esx-1: "10.{{ team_num }}.{{ team_num }}.40"
 esx-2: "10.{{ team_num }}.{{ team_num }}.45"
 win-dc: "10.{{ team_num }}.{{ team_num }}.10"
 
+# Remote IPS
+remote_ip: "172.16.{{ team_num }}."
+remote_mask: "172.16.{{ team_num }}.0/24"
