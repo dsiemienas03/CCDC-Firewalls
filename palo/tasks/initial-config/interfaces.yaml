@@ -19,7 +19,6 @@
     mode: "layer2"
     zone: "lan"
 
-
 # Custom zones for certian applications
 - name: Create Windows zone
   paloaltonetworks.panos.panos_zone:
@@ -39,6 +38,25 @@
     mode: "layer2"
     zone: "dbsrv"
 
+- name: Create MGT zone
+  paloaltonetworks.panos.panos_zone:
+    provider: "{{ provider }}"
+    mode: "layer2"
+    zone: "mgt"
+
+- name: Create esx1 zone
+  paloaltonetworks.panos.panos_zone:
+    provider: "{{ provider }}"
+    mode: "layer2"
+    zone: "esx1"
+
+- name: Create esx2 zone
+  paloaltonetworks.panos.panos_zone:
+    provider: "{{ provider }}"
+    mode: "layer2"
+    zone: "esx2"
+
+
 
 
 # Add interfaces to zones
@@ -50,6 +68,7 @@
     zone_name: "wan"
     if_name: "ethernet1/1"
     gathered_filter: "if_name"
+
 - name: add ethernet1/2 to zone lan
   paloaltonetworks.panos.panos_interface:
     provider: "{{ provider }}"
@@ -58,6 +77,44 @@
     zone_name: "lan"
     if_name: "ethernet1/2"
     gathered_filter: "if_name"
+
+- name: add ethernet1/3 to zone esx1
+  paloaltonetworks.panos.panos_interface:
+    provider: "{{ provider }}"
+    mode: "layer2"
+    vlan_name: "default"
+    zone_name: "esx1"
+    if_name: "ethernet1/3"
+    gathered_filter: "if_name"
+
+- name: add ethernet1/4 to zone esx2
+  paloaltonetworks.panos.panos_interface:
+    provider: "{{ provider }}"
+    mode: "layer2"
+    vlan_name: "default"
+    zone_name: "esx2"
+    if_name: "ethernet1/4"
+    gathered_filter: "if_name"
+
+- name: add ethernet1/11 to zone mgt
+  paloaltonetworks.panos.panos_interface:
+    provider: "{{ provider }}"
+    mode: "layer2"
+    vlan_name: "default"
+    zone_name: "mgt"
+    if_name: "ethernet1/11"
+    gathered_filter: "if_name"
+
+- name: add ethernet1/12 to zone mgt
+  paloaltonetworks.panos.panos_interface:
+    provider: "{{ provider }}"
+    mode: "layer2"
+    vlan_name: "default"
+    zone_name: "mgt"
+    if_name: "ethernet1/12"
+    gathered_filter: "if_name"
+
+
 - name: Update VLAN
   paloaltonetworks.panos.panos_vlan:
     provider: "{{ provider }}"
@@ -65,6 +122,11 @@
     interface:
       - "ethernet1/1"
       - "ethernet1/2"
+      - "ethernet1/3"
+      - "ethernet1/4"
+      - "ethernet1/11"
+      - "ethernet1/12"
+
 - name: Set initial interfaces as done
   set_fact:
     initial_interface: "n"
