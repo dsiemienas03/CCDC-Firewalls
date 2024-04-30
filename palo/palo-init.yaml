@@ -63,6 +63,11 @@
         cacheable: true
       when: update_other == "y"
 
+  # Zones
+    - name: Add Zones
+      ansible.builtin.import_tasks:  tasks/initial-config/zones.yaml
+      when: config_initial_interface == "y"
+
   # Interfaces
     - name: Add interfaces
       ansible.builtin.import_tasks:  tasks/initial-config/interfaces.yaml
