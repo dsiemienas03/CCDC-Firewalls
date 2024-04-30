@@ -5,7 +5,7 @@
     source_zone: ["lan"]
     source_ip: ["any"]
     destination_zone: ["esx1"]
-    destination_ip: ["esx-1"]
+    destination_ip: ["{{ esx1 }}"]
     application: ["vmware"]
     action: "allow"
     log_start: true
@@ -19,7 +19,7 @@
     source_zone: ["lan"]
     source_ip: ["any"]
     destination_zone: ["esx2"]
-    destination_ip: ["esx-2"]
+    destination_ip: ["{{ esx2 }}"]
     application: ["vmware"]
     action: "allow"
     log_start: true
@@ -33,7 +33,7 @@
     source_zone: ["lan"]
     source_ip: ["any"]
     destination_zone: ["any"]
-    destination_ip: ["win-dc"]
+    destination_ip: ["{{ windc }}"]
     application: ["winsrv-apps"]
     action: "allow"
     log_start: true
