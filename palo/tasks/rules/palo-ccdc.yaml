@@ -57,7 +57,7 @@
     source_zone: ["any"]
     source_ip: ["any"]
     destination_zone: ["wan"]
-    destination_ip: ["{{  white_mask }}"]
+    destination_ip: ["{{  mask_white }}"]
     application: ["any"]
     action: "allow"
     log_start: true

@@ -31,8 +31,8 @@
           Logging: "{{ config_logging }}"
           Initial Rules: "{{ config_initial_rules }}"
           PANOS Version: "{{ panos_version }}"
-          IP Range: "{{ ip_range }}"
-          Network: "{{ ip_range_mask }}"
+          # IP Range: "{{ ip_range }}"
+          # Network: "{{ ip_range_mask }}"
           Wazuh: "{{ wazuh }}"
           Wazuh Port: "{{ wazuh_port }}"
     - name: Confirm config
