@@ -135,7 +135,7 @@
       register: system_info
       until: system_info is not failed
       retries: 100
-      delay: 5
+      delay: 10
       listen: reboot
 
     - name: Update System Info
