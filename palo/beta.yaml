@@ -36,17 +36,21 @@
           Wazuh: "{{ wazuh }}"
           Wazuh Port: "{{ wazuh_port }}"
 
-  # Commit changes
-    - name: Commit interface changes
-      ansible.builtin.import_tasks:  tasks/commit.yaml
-      when: config_initial_interface == "y"
 
   # Import beta tasks here
+    - name: Set palo ip_address
+      set_fact:
+        palo_ip: "{{ ip_address }}"
+
     - name: Configure SSH decryption
       ansible.builtin.import_tasks: tasks/config/ssh-decrypt.yaml
       when: config_initial_groups == "y"
 
 
+  # Commit changes
+    - name: Commit interface changes
+      ansible.builtin.import_tasks:  tasks/commit.yaml
+      when: config_initial_interface == "y"
 
 
   handlers:
