@@ -15,6 +15,7 @@ esx1: "10.{{ team_num }}.{{ team_num }}.40"
 esx2: "10.{{ team_num }}.{{ team_num }}.45"
 windc: "10.{{ team_num }}.{{ team_num }}.10"
 wazuh: "{{ local_ip }}246"
+wazuh_port: "1516"
 
 # Remote IPS
 remote_ip: "172.16.{{ team_num }}."
