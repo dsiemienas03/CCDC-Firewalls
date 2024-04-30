@@ -106,8 +106,13 @@
       ansible.builtin.import_tasks:  
         tasks/rules/palo-ccdc.yaml
       when: config_initial_rules == "y"
+    
+    - name: Add local firewall Rules
+      ansible.builtin.import_tasks:  
+        tasks/rules/palo-local.yaml
+      when: config_initial_rules == "y"
 
-    - name: Add base firewall rules
+    - name: Add comp firewall rules
       ansible.builtin.import_tasks:  
         tasks/rules/palo-rules.yaml
       when: config_initial_rules == "y"

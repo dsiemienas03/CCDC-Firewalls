@@ -29,7 +29,7 @@
     source_zone: ["any"]
     source_ip: ["any"]
     destination_zone: ["wan"]
-    destination_ip: ["{{  ccs }}"]
+    destination_ip: "{{ ccs_white }}"
     application: ["any"]
     action: "allow"
     log_start: true
