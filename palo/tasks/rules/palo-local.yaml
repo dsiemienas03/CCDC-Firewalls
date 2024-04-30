@@ -10,7 +10,7 @@
     action: "allow"
     log_start: true
     log_end: true
-    v
+
 
 - name: LAN to ESXI-1
   paloaltonetworks.panos.panos_security_rule:
