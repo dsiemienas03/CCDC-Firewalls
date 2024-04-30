@@ -10,6 +10,7 @@
     action: "allow"
     log_start: true
     log_end: true
+    log_forwarding_profile: "Loggie McLog Face"
 
 
 - name: LAN to ESXI-1
@@ -25,6 +26,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    log_forwarding_profile: "Loggie McLog Face"
 
 - name: LAN to ESXI-2
   paloaltonetworks.panos.panos_security_rule:
@@ -39,6 +41,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    log_forwarding_profile: "Loggie McLog Face"
 
 - name: Add windows server rules
   paloaltonetworks.panos.panos_security_rule:
@@ -53,3 +56,4 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    log_forwarding_profile: "Loggie McLog Face"
