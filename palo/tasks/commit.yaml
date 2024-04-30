@@ -8,9 +8,6 @@
   ansible.builtin.debug:
     msg: "{{ changes.stdout | from_json }}"
 
-- name: Pause until for commit verification
-  ansible.builtin.pause:
-
 - name: Commit changes if needed
   paloaltonetworks.panos.panos_commit_firewall:
     provider: '{{ provider }}'
