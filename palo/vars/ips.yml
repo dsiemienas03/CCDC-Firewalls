@@ -10,9 +10,9 @@ ccs_white: "10.120.0.111"
 local_ip: "10.{{ team_num }}.{{ team_num }}."
 local_mask: "10.{{ team_num }}.{{ team_num }}.0/24"
 local_dns: "10"
-esx-1: "10.{{ team_num }}.{{ team_num }}.40"
-esx-2: "10.{{ team_num }}.{{ team_num }}.45"
-win-dc: "10.{{ team_num }}.{{ team_num }}.10"
+esx1: "10.{{ team_num }}.{{ team_num }}.40"
+esx2: "10.{{ team_num }}.{{ team_num }}.45"
+windc: "10.{{ team_num }}.{{ team_num }}.10"
 
 # Remote IPS
 remote_ip: "172.16.{{ team_num }}."
