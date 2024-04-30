@@ -9,6 +9,7 @@
     action: "allow"
     log_start: true
     log_end: true
+    log_forwarding_profile: "Loggie McLog Face"
 
 - name: Phone-out
   paloaltonetworks.panos.panos_security_rule:
@@ -21,6 +22,7 @@
     action: "allow"
     log_start: true
     log_end: true
+    log_forwarding_profile: "Loggie McLog Face"
 
 - name: CCS-out
   paloaltonetworks.panos.panos_security_rule:
@@ -34,6 +36,7 @@
     action: "allow"
     log_start: true
     log_end: true
+    log_forwarding_profile: "Loggie McLog Face"
 
 - name: Proxy-out
   paloaltonetworks.panos.panos_security_rule:
@@ -48,6 +51,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    log_forwarding_profile: "Loggie McLog Face"
 
 
 - name: White-out
@@ -63,6 +67,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    log_forwarding_profile: "Loggie McLog Face"
 
 
 - name: Inbound-icmp
@@ -78,6 +83,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    log_forwarding_profile: "Loggie McLog Face"
 
 - name: Inbound-rdp
   paloaltonetworks.panos.panos_security_rule:
@@ -92,6 +98,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    log_forwarding_profile: "Loggie McLog Face"
 
 - name: Temp block wan
   paloaltonetworks.panos.panos_security_rule:
@@ -106,3 +113,4 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    log_forwarding_profile: "Loggie McLog Face"
