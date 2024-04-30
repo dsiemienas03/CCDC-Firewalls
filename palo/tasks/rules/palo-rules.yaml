@@ -11,7 +11,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 # web-browsing
 - name: Inbound-http1
@@ -27,7 +27,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 - name: Inbound-http2
   paloaltonetworks.panos.panos_security_rule:
@@ -42,7 +42,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 - name: Inbound-http3
   paloaltonetworks.panos.panos_security_rule:
@@ -57,7 +57,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 - name: Inbound-http4
   paloaltonetworks.panos.panos_security_rule:
@@ -72,7 +72,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 - name: Inbound-http5
   paloaltonetworks.panos.panos_security_rule:
@@ -87,7 +87,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 # add base rules for ssh
 - name: Inbound-ssh1
@@ -103,7 +103,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 - name: Inbound-ssh2
   paloaltonetworks.panos.panos_security_rule:
@@ -118,7 +118,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 - name: Inbound-ssh3
   paloaltonetworks.panos.panos_security_rule:
@@ -133,7 +133,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 # add base rules for mail protocols
 - name: Inbound-smtp
@@ -149,7 +149,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 - name: Inbound-pop
   paloaltonetworks.panos.panos_security_rule:
@@ -164,7 +164,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 
 # add rules for dns
@@ -181,7 +181,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 # Safety rule
 - name: Inbound safety
@@ -196,7 +196,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 
 # Allow all traffic
@@ -213,7 +213,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 - name: Allow all traffic out
   paloaltonetworks.panos.panos_security_rule:
@@ -228,7 +228,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 - name: Add windows server rules
   paloaltonetworks.panos.panos_security_rule:
@@ -243,7 +243,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 
 - name: Add outbound block rule
@@ -259,7 +259,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 - name: Add inbound block rule
   paloaltonetworks.panos.panos_security_rule:
@@ -274,7 +274,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    log_forwarding_profile: "Loggie McLog Face"
+    
 
 
 # - name: Set initial rules as done
