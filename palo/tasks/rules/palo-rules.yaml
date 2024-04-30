@@ -172,36 +172,6 @@
     group_profile: "security"
 
 # OUTBOUND rules
-# DNS
-- name: Outbound-dns
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: "outbound-dns"
-    source_zone: ["lan"]
-    source_ip: ["any"]
-    destination_zone: ["wan"]
-    destination_ip: ["{{  dns_white }}"]
-    application: ["dns"]
-    action: "allow"
-    log_start: true
-    log_end: true
-    group_profile: "security"
-
-- name: Outbound-dns2
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: "outbound-dns2"
-    source_zone: ["lan"]
-    source_ip: ["any"]
-    destination_zone: ["wan"]
-    destination_ip: ["{{  dns_white }}"]
-    application: ["dns"]
-    action: "allow"
-    log_start: true
-    log_end: true
-    group_profile: "security"
-
-
 # ssl, web-browsing, apt-get, ftp, sftp, pop3, ssh
 
 - name: Outbound-web
