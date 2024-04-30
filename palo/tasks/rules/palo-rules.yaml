@@ -171,24 +171,6 @@
     log_end: true
     group_profile: "security"
 
-# OUTBOUND rules
-# ssl, web-browsing, apt-get, ftp, sftp, pop3, ssh
-
-
-- name: Outbound-web-all
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: "outbound-web-all"
-    source_zone: ["lan"]
-    source_ip: ["any"]
-    destination_zone: ["wan"]
-    destination_ip: ["any"]
-    service: "service-web"
-    action: "deny"
-    log_start: true
-    log_end: true
-    group_profile: "security"
-
 # Safety rule
 - name: Inbound safety
   paloaltonetworks.panos.panos_security_rule:
