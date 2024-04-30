@@ -174,33 +174,6 @@
 # OUTBOUND rules
 # ssl, web-browsing, apt-get, ftp, sftp, pop3, ssh
 
-- name: Outbound-web
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: "outbound-web"
-    source_zone: ["lan"]
-    source_ip: ["any"]
-    destination_zone: ["wan"]
-    destination_ip: ["any"]
-    application: ["web-browsing", "ssl"]
-    action: "allow"
-    log_start: true
-    log_end: true
-    group_profile: "security"
-
-- name: Outbound-filtered
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: "outbound-filtered"
-    source_zone: ["lan"]
-    source_ip: ["any"]
-    destination_zone: ["wan"]
-    destination_ip: ["any"]
-    application: ["apt-get"]
-    action: "allow"
-    log_start: true
-    log_end: true
-    group_profile: "security"
 
 - name: Outbound-web-all
   paloaltonetworks.panos.panos_security_rule:
