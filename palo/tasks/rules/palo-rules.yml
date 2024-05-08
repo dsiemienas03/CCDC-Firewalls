@@ -11,6 +11,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 # web-browsing
 - name: Inbound-http1
@@ -26,6 +27,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 - name: Inbound-http2
   paloaltonetworks.panos.panos_security_rule:
@@ -40,6 +42,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 - name: Inbound-http3
   paloaltonetworks.panos.panos_security_rule:
@@ -54,6 +57,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 - name: Inbound-http4
   paloaltonetworks.panos.panos_security_rule:
@@ -68,6 +72,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 - name: Inbound-http5
   paloaltonetworks.panos.panos_security_rule:
@@ -82,6 +87,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 # add base rules for ssh
 - name: Inbound-ssh1
@@ -97,6 +103,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 - name: Inbound-ssh2
   paloaltonetworks.panos.panos_security_rule:
@@ -111,6 +118,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 - name: Inbound-ssh3
   paloaltonetworks.panos.panos_security_rule:
@@ -125,6 +133,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 # add base rules for mail protocols
 - name: Inbound-smtp
@@ -140,6 +149,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 - name: Inbound-pop
   paloaltonetworks.panos.panos_security_rule:
@@ -154,6 +164,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 
 # add rules for dns
@@ -170,51 +181,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-
-# OUTBOUND rules
-# ssl, web-browsing, apt-get, ftp, sftp, pop3, ssh
-
-- name: Outbound-web
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: "outbound-web"
-    source_zone: ["lan"]
-    source_ip: ["any"]
-    destination_zone: ["wan"]
-    destination_ip: ["any"]
-    application: ["web-browsing", "ssl"]
-    action: "allow"
-    log_start: true
-    log_end: true
-    group_profile: "security"
-
-- name: Outbound-filtered
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: "outbound-filtered"
-    source_zone: ["lan"]
-    source_ip: ["any"]
-    destination_zone: ["wan"]
-    destination_ip: ["any"]
-    application: ["apt-get"]
-    action: "allow"
-    log_start: true
-    log_end: true
-    group_profile: "security"
-
-- name: Outbound-web-all
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: "outbound-web-all"
-    source_zone: ["lan"]
-    source_ip: ["any"]
-    destination_zone: ["wan"]
-    destination_ip: ["any"]
-    service: "service-web"
-    action: "deny"
-    log_start: true
-    log_end: true
-    group_profile: "security"
+    
 
 # Safety rule
 - name: Inbound safety
@@ -229,6 +196,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 
 # Allow all traffic
@@ -245,6 +213,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 - name: Allow all traffic out
   paloaltonetworks.panos.panos_security_rule:
@@ -259,6 +228,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 - name: Add windows server rules
   paloaltonetworks.panos.panos_security_rule:
@@ -273,6 +243,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 
 - name: Add outbound block rule
@@ -288,6 +259,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 - name: Add inbound block rule
   paloaltonetworks.panos.panos_security_rule:
@@ -302,6 +274,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
+    
 
 
 # - name: Set initial rules as done

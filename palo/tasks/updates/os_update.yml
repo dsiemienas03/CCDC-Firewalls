@@ -1,12 +1,3 @@
-- name: Update content to latest version
-  paloaltonetworks.panos.panos_dynamic_updates:
-    provider: '{{ provider }}'
-  register: content
-
-- name: Updates available 
-  ansible.builtin.debug:
-    msg: "{{ content }}"
-
 - name: PAN-OS update
   ansible.builtin.debug:
     msg: "{{ panos_version }}"

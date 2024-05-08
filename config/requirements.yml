@@ -1,0 +1,8 @@
+collections:
+  - name: paloaltonetworks.panos
+  # Palo
+  # pfSense
+  - name: pfsensible.core
+  # - name: vbotka.freebsd_pf
+  # Cisco
+  - name: cisco.fmcansible

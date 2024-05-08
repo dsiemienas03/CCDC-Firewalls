@@ -10,8 +10,8 @@
     provider: "{{ provider }}"
     syslog_profile: "wazzuh-profile"
     name: "wazuh-server"
-    server: "{{ip_range}}{{wazuh}}"
-    syslog_port: "{{wazuh_port}}"
+    server: "{{ local_ip }}{{ wazuh }}"
+    syslog_port: "{{ wazuh_port }}"
 
 - name: Create log forwarding profile
   paloaltonetworks.panos.panos_log_forwarding_profile:

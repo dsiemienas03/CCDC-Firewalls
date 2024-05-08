@@ -3,19 +3,19 @@
   paloaltonetworks.panos.panos_address_object:
     provider: "{{ provider }}"
     name: "lan"
-    value: "{{ip_range_mask}}"
+    value: "{{local_ip_mask}}"
 
 - name: Add DNS address group
   paloaltonetworks.panos.panos_address_object:
     provider: "{{ provider }}"
     name: "dns_local"
-    value: "{{ip_range}}{{dns}}"
+    value: "{{local_ip}}{{dns}}"
 
 - name: Add windows address object
   paloaltonetworks.panos.panos_address_object:
     provider: "{{ provider }}"
     name: "win1"
-    value: "{{ip_range}}10"
+    value: "{{local_ip}}10"
 
 - name: Add tmp address object
   paloaltonetworks.panos.panos_address_object:
