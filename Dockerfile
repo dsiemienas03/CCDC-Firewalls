@@ -25,7 +25,7 @@ COPY cisco/* cisco
 # Copy Ansible galaxies
 RUN set -ex ;\
     mkdir /etc/panos
-COPY pan-os-ansible/* /etc/panos
+COPY submodule/pan-os-ansible/* /etc/panos
 
 RUN ansible-galaxy collection install -r /etc/config/requirements.yml
 # RUN ansible-galaxy collection install -p /etc/panos/galaxy.yml
