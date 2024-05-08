@@ -24,7 +24,7 @@ COPY palo/* palo
 COPY cisco/* cisco
 COPY pfSense/* pfsense
 COPY submodules/pan-os-ansible/* /etc/panos
-RUN ansible-galaxy collection install -p /etc/panos/galaxy.yml
+RUN ansible-galaxy collection install -p /etc/panos/
 
 
 # RUN ansible-galaxy collection install -r /etc/config/requirements.yml
