@@ -1,7 +1,8 @@
 collections:
+# Palo
 - name: paloaltonetworks.panos
-
-# - name: pfsensible.core
+# pfSense
+- name: pfsensible.core
 # - name: vbotka.freebsd_pf
-
-# - name: community.network.ftd_configuration
+# Cisco
+- name: community.network.ftd_configuration
