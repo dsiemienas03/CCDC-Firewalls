@@ -88,7 +88,7 @@ jobs:
             type=semver,pattern={{major}}
             type=ref,event=branch
             type=ref,event=pr
-            type=latest
+            type=semver,pattern=latest
 
   
       # Build and push Docker image with Buildx (don't push on PR)
