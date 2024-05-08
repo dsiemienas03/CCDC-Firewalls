@@ -12,9 +12,8 @@ on:
     branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ '*.*.*' ]
-  pull_request:
-    types: [ closed ]
-    branches: [ "main" ]
+  release:
+    types: [ published ]
 
 env:
   # Use docker.io for Docker Hub if empty
