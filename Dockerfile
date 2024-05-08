@@ -22,9 +22,9 @@ RUN set -ex ;\
     mkdir pfsense ;\
     mkdir config 
 
-COPY config/* config/
-COPY palo/* palo/
-COPY cisco/* cisco/
+COPY config/* ./config/
+COPY palo/* ./palo/
+COPY cisco/* ./cisco/
 COPY pfSense/* ./pfsense
 
 RUN set -ex ;\
