@@ -1,3 +1,7 @@
 [submodule "pan-os-ansible"]
   path = pan-os-ansible
   url = https://github.com/PaloAltoNetworks/pan-os-ansible.git
+
+[submodule "pfsensible.core"]
+  path = pfsensible
+  url = https://github.com/pfsensible/core.git
