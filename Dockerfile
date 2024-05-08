@@ -28,7 +28,7 @@ COPY cisco/* ./cisco/
 COPY pfSense/* ./pfsense
 
 RUN set -ex ;\
-    pip3 install --no-cache-dir -r config/requirements.txt ;\
+    pip3 install --break-system-packages --no-cache-dir -r config/requirements.txt ;\
     ansible-galaxy collection install -r config/requirements.yml
 
 
