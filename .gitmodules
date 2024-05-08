@@ -6,6 +6,6 @@
   path = submodule/pfsensible
   url = https://github.com/pfsensible/core.git
 
-[submodule "FMCansible"]
+[submodule "FMCAnsible"]
   path = submodule/fmc-ansible
   url = https://github.com/CiscoDevNet/FMCAnsible.git
