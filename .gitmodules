@@ -2,10 +2,10 @@
   path = submodule/pan-os-ansible
   url = https://github.com/PaloAltoNetworks/pan-os-ansible.git
 
-[submodule "pfsensible"]
+[submodule "pfsensible.core"]
   path = submodule/pfsensible
   url = https://github.com/pfsensible/core.git
 
-[submodule "fmc-ansible"]
+[submodule "FMCAnsible"]
   path = submodule/fmc-ansible
   url = https://github.com/CiscoDevNet/FMCAnsible.git
