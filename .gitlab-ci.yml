@@ -1,0 +1,39 @@
+stages:
+  - build
+  - pre_merge
+  - post_merge
+  - deploy
+  - release
+
+include:
+  - component: git.siemienas.dev/components/templates/docker_build@~latest
+    inputs:
+      stage: build
+  - component: git.siemienas.dev/components/templates/docker_pre_merge@~latest
+    inputs: 
+      stage:  pre_merge
+  - component: git.siemienas.dev/components/templates/docker_post_merge@~latest
+    inputs: 
+      stage: post_merge
+  - component: git.siemienas.dev/components/templates/docker_deploy@~latest
+    inputs: 
+      stage: deploy
+  - component: git.siemienas.dev/components/templates/docker_release@~latest
+    inputs: 
+      stage: release
+
+variables:
+  DOCKER_REGISTRY: registry.siemienas.dev
+  CI_REGISTRY: registry.siemienas.dev
+  DOCKER_DRIVER: overlay
+  IMAGE_PATH: $CI_REGISTRY/$CI_PROJECT_PATH
+  CURRENT_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH:latest
+  RELEASE_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH:$CI_COMMIT_TAG
+  BETA_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH:$CI_COMMIT_BRANCH
+    #  DOCKER_HOST: tcp://docker:2375/  
+  DOCKER_TLS_CERTDIR: ""
+  GIT_SUBMODULE_STRATEGY: recursive
+
+
+before_script:
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
