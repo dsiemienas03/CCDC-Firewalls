@@ -8,13 +8,13 @@ updates:
   - package-ecosystem: "docker" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "daily"
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/config" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "daily"
 
   - package-ecosystem: "gitsubmodule"
-    directory: "/" # Location of package manifests
+    directory: "/submodules" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "daily"
