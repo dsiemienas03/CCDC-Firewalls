@@ -1,4 +1,4 @@
-- name: Gather security rules
+- name: Display current config
   hosts: "firewall"
   connection: local
 
