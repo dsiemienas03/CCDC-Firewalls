@@ -1,0 +1,3 @@
+[submodule "pan-os"]
+  path = project
+  url = https://github.com/PaloAltoNetworks/pan-os-ansible.git
