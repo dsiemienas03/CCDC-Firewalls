@@ -28,6 +28,6 @@ RUN set -ex ;\
 COPY pan-os-ansible/* /etc/panos
 
 # RUN ansible-galaxy collection install -r /etc/config/requirements.yml
-RUN ansible-galaxy collection install -p /etc/panos/galaxy.yaml
+RUN ansible-galaxy collection install -p /etc/panos/galaxy.yml
 
 # ENTRYPOINT [ "" ]
