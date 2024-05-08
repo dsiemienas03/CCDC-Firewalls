@@ -8,10 +8,6 @@ name: Docker Latest
 on:
   schedule:
     - cron: '22 21 * * *'
-  push:
-    branches: [ "main" ]
-    # Publish semver tags as releases.
-    tags: [ '*.*.*' ]
   release:
     types: [ published ]
 
@@ -24,7 +20,7 @@ env:
 
 jobs:
   build:
-
+    if: github.event_name == 'release'
     runs-on: self-hosted
     permissions:
       contents: read
