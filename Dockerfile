@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:rolling
 
 # Add user
 RUN set -ex ;\
@@ -20,7 +20,7 @@ RUN set -ex ;\
     mkdir palo ;\
     mkdir cisco ;\
     mkdir pfsense ;\
-    mkdir config 
+    mkdir config
 
 COPY config/* ./config/
 COPY palo/* ./palo/
@@ -28,8 +28,11 @@ COPY cisco/* ./cisco/
 COPY pfSense/* ./pfsense
 
 RUN set -ex ;\
-    pip3 install --break-system-packages --no-cache-dir -r config/requirements.txt ;\
-    ansible-galaxy collection install -r config/requirements.yml
+    pip3 install --break-system-packages --no-cache-dir \
+        -r config/requirements.txt ;\
+        \
+    ansible-galaxy collection install \
+        -r config/requirements.yml
 
 
 # ENTRYPOINT [ "" ]
