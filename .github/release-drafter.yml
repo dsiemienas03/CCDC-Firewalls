@@ -30,7 +30,11 @@ template: |
   ## Download
   ```bash
   docker pull ghcr.io/dsiemienas03/ccdc-ansible:$NEXT_MAJOR_VERSION
+  ```
+  ```bash
   docker pull ghcr.io/dsiemienas03/ccdc-ansible:$NEXT_MINOR_VERISON
+  ```
+  ```bash
   docker pull ghcr.io/dsiemienas03/ccdc-ansible:$NEXT_PATCH_VERSION
   ```
 
