@@ -27,6 +27,7 @@ COPY config/* ./ansible/config/
 COPY palo/* ./ansible/palo/
 COPY cisco/* ./ansible/cisco/
 COPY pfsense/* ./ansible/pfsense
+COPY ansible/* ./ansible/
 
 RUN set -ex ;\
     pip3 install --break-system-packages --no-cache-dir \
@@ -36,4 +37,4 @@ RUN set -ex ;\
         -r ansible/config/requirements.yml
 
 
-# ENTRYPOINT [ "" ]
+ENTRYPOINT [ "/bin/bash" ]
