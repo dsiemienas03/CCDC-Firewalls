@@ -1,13 +1,15 @@
-- hosts: all
-  connection: httpapi
+- name: Cisco configuration
+  hosts: "firewall"
+  connection: local
+  ignore_errors: true
   tasks:
     - name: Find an intrustion policy
-      ftd_configuration:
+      community.network.ftd_configuration:
         operation: getIntrusionPolicyList
         register_as: policies
 
     - name: Allow traffic by default
-      ftd_configuration:
+      community.network.ftd_configuration:
         operation: upsertAccessPolicy
         data:
           name: NGFW-Access-Policy
@@ -17,5 +19,5 @@
             intrusionPolicy:
               id: "{{ policies[0].id }}"
               type: "{{ policies[0].type }}"
-            type: accessdefaultaction
+            type: accessdefaultactionab
           type: accesspolicy
