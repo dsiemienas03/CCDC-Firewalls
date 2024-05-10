@@ -19,5 +19,3 @@ updates:
     schedule:
       interval: "daily"
 
-  - package-ecosystem: "github-actions"
-  
