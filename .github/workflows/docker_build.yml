@@ -25,20 +25,6 @@ env:
 
 
 jobs:
-  print-token:
-    permissions: write-all
-    name: print-token
-    # needs: pre-pkr
-    runs-on: self-hosted
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-
-      - name: Get registration token
-        id: getRegToken
-        run: |
-          curl -X POST -H \"Accept: application/vnd.github.v3+json\"  -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/myprofile/myrepo/actions/runners/registration-token
 
   build:
 
@@ -46,6 +32,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      pull-requests: write
       # This is used to complete the identity challenge
       # with sigstore/fulcio when running outside of PRs.
       id-token: write
