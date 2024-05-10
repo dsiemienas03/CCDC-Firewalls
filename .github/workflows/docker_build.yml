@@ -100,7 +100,7 @@ jobs:
         uses: docker/scout-action@v1
         with:
           command: compare
-          image: ${{ steps.meta.outputs.tags }}
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:beta
           to: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.COMPARE_TAG }}
           ignore-unchanged: false
           only-severities: critical,high
