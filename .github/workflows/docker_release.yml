@@ -9,7 +9,7 @@ on:
   schedule:
     - cron: '22 21 * * *'
   release:
-    types: [ published ]
+    types: [ published, prereleased, released ]
 
 env:
   # Use docker.io for Docker Hub if empty
