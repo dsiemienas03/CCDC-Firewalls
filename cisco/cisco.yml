@@ -1,9 +1,7 @@
-- name: Palo configuration
+- name: Cisco configuration
   hosts: "firewall"
   connection: local
   ignore_errors: true
-  hosts: all
-  v
   tasks:
     - name: Find an intrustion policy
       ftd_configuration:
@@ -21,5 +19,5 @@
             intrusionPolicy:
               id: "{{ policies[0].id }}"
               type: "{{ policies[0].type }}"
-            type: accessdefaultaction
+            type: accessdefaultactionab
           type: accesspolicy

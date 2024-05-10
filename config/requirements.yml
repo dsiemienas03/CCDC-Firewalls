@@ -3,6 +3,6 @@ collections:
   # Palo
   # pfSense
   - name: pfsensible.core
-  # - name: vbotka.freebsd_pf
+  - name: vbotka.freebsd_pf
   # Cisco
   - name: cisco.fmcansible
