@@ -27,6 +27,11 @@ version-resolver:
       - 'patch'
   default: patch
 template: |
+  ## Download
+  ['$NEXT_PATCH_VERSION'](ghcr.io/dsiemienas03/ccdc-ansible:'$NEXT_PATCH_VERSION'')
+
   ## Changes
 
   $CHANGES
+
+
