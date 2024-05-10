@@ -14,6 +14,7 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
+  REGISTRY2: docker.com
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
   COMPARE_TAG: latest
@@ -66,7 +67,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            ${{ env.REGISTRY2 }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest
             type=semver,pattern={{version}}
