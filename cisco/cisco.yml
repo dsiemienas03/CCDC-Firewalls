@@ -1,5 +1,9 @@
-- hosts: all
-  connection: httpapi
+- name: Palo configuration
+  hosts: "firewall"
+  connection: local
+  ignore_errors: true
+  hosts: all
+  v
   tasks:
     - name: Find an intrustion policy
       ftd_configuration:
