@@ -15,7 +15,7 @@ ssh-keygen -t rsa -b 4096 -C "ansible@localhost" -f ~/.ssh/id_rsa -N ""
 api_key=$(curl -s -k -H "Content-Type: application/x-www-form-urlencoded" -X POST "https://${palo_ip}/api/?type=keygen" -d "user=admin&password=${palo_pw}" | grep -oP '(?<=<key>)[^<]+')
 
 # Output to fw.yml 
-cat > fw.yml <<EOF
+cat >> fw.yml <<EOF
 firewall:
   hosts:
     ${palo_ip}:
