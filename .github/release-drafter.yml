@@ -28,7 +28,9 @@ version-resolver:
   default: patch
 template: |
   ## Download
-  `docker pull ghcr.io/dsiemienas03/ccdc-ansible:$NEXT_PATCH_VERSION`
+  ```bash
+  docker pull ghcr.io/dsiemienas03/ccdc-ansible:$NEXT_PATCH_VERSION
+  ```
 
   ## Changes
 
