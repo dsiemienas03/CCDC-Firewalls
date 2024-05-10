@@ -73,7 +73,7 @@ jobs:
         with:
           images: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            ${{ env.REGISTRY2 }}/${{ env.IMAGE_NAME }}
+          # ${{ env.REGISTRY2 }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest
             type=semver,pattern={{version}}
