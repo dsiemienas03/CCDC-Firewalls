@@ -17,22 +17,24 @@ RUN set -ex ;\
     rm -rf /var/lib/apt/lists/*
 
 RUN set -ex ;\
-    mkdir palo ;\
-    mkdir cisco ;\
-    mkdir pfsense ;\
-    mkdir config
+    mkdir ansible ;\
+    mkdir ansible/palo ;\
+    mkdir ansible/cisco ;\
+    mkdir ansible/pfsense ;\
+    mkdir ansible/config
 
-COPY config/* ./config/
-COPY palo/* ./palo/
-COPY cisco/* ./cisco/
-COPY pfSense/* ./pfsense
+COPY config/* ./ansible/config/
+COPY palo/* ./ansible/palo/
+COPY cisco/* ./ansible/cisco/
+COPY pfsense/* ./ansible/pfsense
+COPY ansible/* ./ansible/
 
 RUN set -ex ;\
     pip3 install --break-system-packages --no-cache-dir \
-        -r config/requirements.txt ;\
+        -r ansible/config/requirements.txt ;\
         \
     ansible-galaxy collection install \
-        -r config/requirements.yml
+        -r ansible/config/requirements.yml
 
 
-# ENTRYPOINT [ "" ]
+ENTRYPOINT [ "/bin/bash" ]

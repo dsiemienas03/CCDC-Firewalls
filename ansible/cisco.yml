@@ -1,5 +1,6 @@
+---
 - name: Cisco configuration
-  hosts: "firewall"
+  hosts: firewall
   connection: local
   ignore_errors: true
   tasks:
