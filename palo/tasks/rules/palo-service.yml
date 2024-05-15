@@ -16,6 +16,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 - name: Inbound-http2
   when: http2 != 0
@@ -33,6 +34,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 - name: Inbound-http3
   when: http3 != 0
@@ -50,6 +52,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 - name: Inbound-http4
   when: http4 != 0
@@ -67,6 +70,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 - name: Inbound-http5
   when: http5 != 0
@@ -84,6 +88,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 # add base rules for ssh
 - name: Inbound-ssh1
@@ -102,6 +107,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 - name: Inbound-ssh2
   when: ssh2 != 0
@@ -119,6 +125,7 @@
     log_start: true
     log_end: true
     group_profile: security
+    tag_name: [Service]
 
 - name: Inbound-ssh3
   when: ssh3 != 0
@@ -136,6 +143,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 # add base rules for mail protocols
 - name: Inbound-smtp
@@ -154,6 +162,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 - name: Inbound-smtp2
   when: smtp2 != 0
@@ -171,6 +180,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 - name: Inbound-smtp3
   when: smtp3 != 0
@@ -188,6 +198,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 - name: Inbound-pop
   when: pop1 != 0
@@ -205,6 +216,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 - name: Inbound-pop2
   when: pop2 != 0
@@ -222,6 +234,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 - name: Inbound-pop3
   when: pop3 != 0
@@ -239,6 +252,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]
 
 # add rules for dns
 - name: Inbound-dns1
@@ -257,3 +271,4 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Service]

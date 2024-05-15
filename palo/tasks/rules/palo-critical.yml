@@ -12,6 +12,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Critical]
 
 - name: Inbound-block-vmware
   paloaltonetworks.panos.panos_security_rule:
@@ -26,22 +27,8 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Critical]
 
-- name: Add windows WAN block server rules
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: wan-win-srv
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [any]
-    destination_ip: ["{{ windc }}"]
-    application: [winsrv-apps]
-    action: deny
-    location: after
-    existing_rule: inbound-vmware
-    group_profile: security
-    log_start: true
-    log_end: true
 
 - name: Allow DC access to DNS
   paloaltonetworks.panos.panos_security_rule:
@@ -58,8 +45,7 @@
     existing_rule: inbound-vmware
     log_start: true
     log_end: true
-
-
+    tag_name: [Critical]
 
 # Safety rule
 - name: Inbound safety
@@ -75,6 +61,7 @@
     disabled: true
     log_start: true
     log_end: true
+    tag_name: [Critical]
 
 # Allow all traffic
 - name: Allow all traffic in
@@ -90,6 +77,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Critical, ALLOW ALL]
 
 - name: Allow web outbound
   paloaltonetworks.panos.panos_security_rule:
@@ -104,6 +92,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Critical]
 
 - name: Block DNS outbound
   paloaltonetworks.panos.panos_security_rule:
@@ -118,6 +107,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Critical]
 
 - name: Allow all traffic out
   paloaltonetworks.panos.panos_security_rule:
@@ -132,11 +122,12 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Critical, ALLOW ALL]
 
 - name: Add windows server rules
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
-    rule_name: lan to windows-server
+    rule_name: lan-winsrv
     source_zone: [lan]
     source_ip: [windows]
     destination_zone: [winsrv]
@@ -146,6 +137,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Critical]
 
 - name: Add outbound block rule
   paloaltonetworks.panos.panos_security_rule:
@@ -160,7 +152,24 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Critical, BLOCK ALL]
 
+- name: Add windows WAN block server rules
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: wan-win-srv
+    source_zone: [wan]
+    source_ip: [any]
+    destination_zone: [any]
+    destination_ip: ["{{ windc }}"]
+    application: [winsrv-apps]
+    action: deny
+    location: before
+    existing_rule: outbound-dns
+    group_profile: security
+    log_start: true
+    log_end: true
+    tag_name: [Critical]
 - name: Add inbound block rule
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
@@ -174,6 +183,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [Critical, BLOCK ALL]
 
 # - name: Set initial rules as done
 #   set_fact:
