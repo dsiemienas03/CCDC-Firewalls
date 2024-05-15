@@ -109,16 +109,6 @@
   # Firewall rules
     - name: Add CCDC firewall Rules
       ansible.builtin.import_tasks:  
-        palo/tasks/rules/palo-ccdc.yml
-      when: config_initial_rules == "y"
-    
-    - name: Add local firewall Rules
-      ansible.builtin.import_tasks:  
-        palo/tasks/rules/palo-local.yml
-      when: config_initial_rules == "y"
-
-    - name: Add comp firewall rules
-      ansible.builtin.import_tasks:  
         palo/tasks/rules/palo-rules.yml
       when: config_initial_rules == "y"
       
