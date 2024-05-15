@@ -20,7 +20,7 @@
     source_ip: ["any"]
     destination_zone: ["any"]
     destination_ip: ["any"]
-    application: ["vmware", "vmware-update", "vmware-view", "vmware-vshpere-web-client"]
+    application: ["vmware", "vmware-update", "vmware-view"]
     action: "deny"
     log_start: true
     log_end: true
