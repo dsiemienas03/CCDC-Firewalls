@@ -1,5 +1,6 @@
+---
 - name: Palo configuration
-  hosts: "firewall"
+  hosts: firewall
   connection: local
   ignore_errors: true
   vars:
@@ -37,23 +38,20 @@
     #   ansible.builtin.import_tasks:
     #     palo/tasks/objects/address.yml
 
-  # Firewall rules
+    # Firewall rules
     - name: Add CCDC firewall Rules
-      ansible.builtin.import_tasks:
-        palo/tasks/rules/palo-rules.yml
+      ansible.builtin.import_tasks: palo/tasks/rules/palo-rules.yml
       when: config_initial_rules == "y"
 
     - name: Commit rule changes
-      ansible.builtin.import_tasks:
-        palo/tasks/commit.yml
+      ansible.builtin.import_tasks: palo/tasks/commit.yml
       when: config_initial_rules == "y"
-
 
   handlers:
     - name: Wait for System Information
       paloaltonetworks.panos.panos_op:
-        provider: '{{ provider }}'
-        cmd: 'show system info'
+        provider: "{{ provider }}"
+        cmd: show system info
       register: system_info
       until: system_info is not failed
       retries: 100

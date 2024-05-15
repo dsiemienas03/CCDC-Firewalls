@@ -1,14 +1,15 @@
+---
 - name: Check latest content
   # Get an updated dynamic content list
   paloaltonetworks.panos.panos_op:
-    provider: '{{ provider }}'
-    cmd: 'request content upgrade check'
+    provider: "{{ provider }}"
+    cmd: request content upgrade check
   register: check
 
 - name: Download latest content
   # Download the latest version
   paloaltonetworks.panos.panos_op:
-    provider: '{{ provider }}'
+    provider: "{{ provider }}"
     cmd: |
       <request><content><upgrade><download>
       <latest></latest>
@@ -23,8 +24,8 @@
 - name: Check content download result
   # wait for this job to finish
   paloaltonetworks.panos.panos_op:
-    provider: '{{ provider }}'
-    cmd: 'show jobs id {{ (download.stdout | from_json).response.result.job }}'
+    provider: "{{ provider }}"
+    cmd: show jobs id {{ (download.stdout | from_json).response.result.job }}
   register: download_job
   until: download_job is not failed and (download_job.stdout | from_json).response.result.job.status == 'FIN'
   retries: 75
@@ -33,7 +34,7 @@
 - name: Install latest content
   # Content is downloaded and ready, now install it
   paloaltonetworks.panos.panos_op:
-    provider: '{{ provider }}'
+    provider: "{{ provider }}"
     cmd: |
       <request><content><upgrade><install>
       <version>latest</version>
@@ -48,8 +49,8 @@
 - name: Check content install result
   # again, wait for job to complete
   paloaltonetworks.panos.panos_op:
-    provider: '{{ provider }}'
-    cmd: 'show jobs id {{ (install.stdout | from_json).response.result.job }}'
+    provider: "{{ provider }}"
+    cmd: show jobs id {{ (install.stdout | from_json).response.result.job }}
   register: install_job
   until: install_job is not failed and (install_job.stdout | from_json).response.result.job.status == 'FIN'
   retries: 75

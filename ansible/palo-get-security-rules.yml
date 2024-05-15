@@ -1,5 +1,6 @@
+---
 - name: Display current config
-  hosts: "firewall"
+  hosts: firewall
   connection: local
 
   vars:

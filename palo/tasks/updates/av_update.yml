@@ -1,14 +1,15 @@
+---
 - name: Check latest AV
   # Get an updated dynamic av list
   paloaltonetworks.panos.panos_op:
-    provider: '{{ provider }}'
-    cmd: 'request anti-virus upgrade check'
+    provider: "{{ provider }}"
+    cmd: request anti-virus upgrade check
   register: check
 
 - name: Download latest AV
   # Download the latest version
   paloaltonetworks.panos.panos_op:
-    provider: '{{ provider }}'
+    provider: "{{ provider }}"
     cmd: |
       <request><anti-virus><upgrade><download>
       <latest></latest>
@@ -23,8 +24,8 @@
 - name: Check anti-virus download result
   # wait for this job to finish
   paloaltonetworks.panos.panos_op:
-    provider: '{{ provider }}'
-    cmd: 'show jobs id {{ (download.stdout | from_json).response.result.job }}'
+    provider: "{{ provider }}"
+    cmd: show jobs id {{ (download.stdout | from_json).response.result.job }}
   register: download_job
   until: download_job is not failed and (download_job.stdout | from_json).response.result.job.status == 'FIN'
   retries: 75
@@ -33,7 +34,7 @@
 - name: Install latest anti-virus
   # Content is downloaded and ready, now install it
   paloaltonetworks.panos.panos_op:
-    provider: '{{ provider }}'
+    provider: "{{ provider }}"
     cmd: |
       <request><anti-virus><upgrade><install>
       <version>latest</version>
@@ -48,8 +49,8 @@
 - name: Check anti-virus install result
   # again, wait for job to complete
   paloaltonetworks.panos.panos_op:
-    provider: '{{ provider }}'
-    cmd: 'show jobs id {{ (av_install.stdout | from_json).response.result.job }}'
+    provider: "{{ provider }}"
+    cmd: show jobs id {{ (av_install.stdout | from_json).response.result.job }}
   register: av_install_job
   until: av_install_job is not failed and (av_install_job.stdout | from_json).response.result.job.status == 'FIN'
   retries: 75

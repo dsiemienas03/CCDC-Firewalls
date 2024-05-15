@@ -1,3 +1,4 @@
+---
 - name: Update anti-virus
   ansible.builtin.import_tasks: av_update.yml
   when: update_other == "y"

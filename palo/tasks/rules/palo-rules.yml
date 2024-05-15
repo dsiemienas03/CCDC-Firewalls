@@ -1,23 +1,20 @@
+---
 - name: Add CCDC firewall Rules
-  ansible.builtin.import_tasks:  
-    palo-ccdc.yml
+  ansible.builtin.import_tasks: palo-ccdc.yml
   when: config_initial_rules == "y"
 
 - name: Add local firewall Rules
-  ansible.builtin.import_tasks:  
-    palo-local.yml
+  ansible.builtin.import_tasks: palo-local.yml
   when: config_initial_rules == "y"
 
 - name: Add block firewall rules
-  ansible.builtin.import_tasks:  
-    palo-critical.yml
+  ansible.builtin.import_tasks: palo-critical.yml
   when: config_initial_rules == "y"
 
 - name: Add comp firewall rules
-  ansible.builtin.import_tasks:  
-    palo-service.yml
+  ansible.builtin.import_tasks: palo-service.yml
   when: config_initial_rules == "y"
-  
+
 - name: Commit rule changes
-  ansible.builtin.import_tasks:  palo/tasks/commit.yml
+  ansible.builtin.import_tasks: palo/tasks/commit.yml
   when: config_initial_rules == "y"

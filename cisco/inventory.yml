@@ -1,6 +1,6 @@
+---
 all:
   vars:
-
 vftd:
   hosts:
     localhost:
