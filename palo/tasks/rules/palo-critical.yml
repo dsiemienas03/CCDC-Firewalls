@@ -1,0 +1,124 @@
+- name: Inbound-block-sql
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-sql"
+    source_zone: ["wan"]
+    source_ip: ["any"]
+    destination_zone: ["any"]
+    destination_ip: ["any"]
+    application: ["mysql"]
+    action: "deny"
+    group_profile: "security"
+    log_start: true
+    log_end: true
+
+- name: Inbound-block-vmware
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-vmware"
+    source_zone: ["wan"]
+    source_ip: ["any"]
+    destination_zone: ["any"]
+    destination_ip: ["any"]
+    application: ["vmware", "vmware-update", "vmware-view"]
+    action: "deny"
+    group_profile: "security"    
+    log_start: true
+    log_end: true
+
+# Safety rule
+- name: Inbound safety
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-safety"
+    source_zone: ["wan"]
+    source_ip: ["any"]
+    destination_zone: ["lan"]
+    destination_ip: ["safe"]
+    action: "deny"
+    group_profile: "security"
+    enabled: false
+    log_start: true
+    log_end: true
+    
+
+
+# Allow all traffic
+- name: Allow all traffic in
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-all"
+    source_zone: ["any"]
+    source_ip: ["any"]
+    destination_zone: ["lan"]
+    destination_ip: ["any"]
+    application: ["any"]
+    action: "allow"
+    group_profile: "security"
+    log_start: true
+    log_end: true
+    
+
+- name: Allow all traffic out
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "outbound-all"
+    source_zone: ["lan"]
+    source_ip: ["any"]
+    destination_zone: ["any"]
+    destination_ip: ["any"]
+    application: ["any"]
+    action: "allow"
+    group_profile: "security"
+    log_start: true
+    log_end: true
+    
+
+- name: Add windows server rules
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "lan to windows-server"
+    source_zone: ["lan"]
+    source_ip: ["windows"]
+    destination_zone: ["winsrv"]
+    destination_ip: ["winsrv"]
+    application: ["winsrv-apps"]
+    action: "allow"
+    group_profile: "security"
+    log_start: true
+    log_end: true
+    
+
+
+- name: Add outbound block rule
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "outbound-block-all"
+    source_zone: ["any"]
+    source_ip: ["lan"]
+    destination_zone: ["any"]
+    destination_ip: ["any"]
+    application: ["any"]
+    action: "deny"
+    group_profile: "security"
+    log_start: true
+    log_end: true
+    
+- name: Add inbound block rule
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-block-all"
+    source_zone: ["wan"]
+    source_ip: ["any"]
+    destination_zone: ["lan"]
+    destination_ip: ["any"]
+    application: ["any"]
+    action: "deny"
+    group_profile: "security"
+    log_start: true
+    log_end: true
+
+# - name: Set initial rules as done
+#   set_fact:
+#     config_initial_rules: "n"
+#     cacheable: true

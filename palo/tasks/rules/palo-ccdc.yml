@@ -23,7 +23,7 @@
     destination_ip: ["{{  phone_white }}"]
     action: "allow"
     location: "after"
-    exitsting_rule: "phone-in"
+    existing_rule: "phone-in"
     log_start: true
     log_end: true
 
@@ -37,7 +37,7 @@
     destination_ip: "{{ ccs_white }}"
     application: ["any"]
     action: "allow"
-    exitsting_rule: "phone-out"
+    existing_rule: "phone-out"
     location: "after"
     log_start: true
     log_end: true
@@ -53,7 +53,7 @@
     application: ["web-browsing", "ssl"]
     action: "allow"
     location: "after"
-    exitsting_rule: "ccs-out"
+    existing_rule: "ccs-out"
     group_profile: "security"
     log_start: true
     log_end: true
@@ -69,7 +69,7 @@
     application: ["any"]
     action: "allow"
     location: "after"
-    exitsting_rule: "proxy-out"
+    existing_rule: "proxy-out"
     group_profile: "security"
     log_start: true
     log_end: true
@@ -86,6 +86,8 @@
     destination_ip: ["any"]
     application: ["ping"]
     action: "allow"
+    location: "after"
+    existing_rule: "white-out"
     group_profile: "security"
     log_start: true
     log_end: true
@@ -101,6 +103,8 @@
     destination_ip: ["windows"]
     application: ["ms-rdp"]
     action: "allow"
+    location: "after"
+    existing_rule: "inbound-icmp"
     group_profile: "security"
     log_start: true
     log_end: true
@@ -117,6 +121,5 @@
     application: ["any"]
     action: "deny"
     group_profile: "security"
-    log_start: true
     log_end: true
     

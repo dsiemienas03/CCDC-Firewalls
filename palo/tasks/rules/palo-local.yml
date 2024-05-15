@@ -8,10 +8,10 @@
     destination_ip: ["any"]
     application: ["any"]
     action: "allow"
+    location: "after"
+    existing_rule: "inbound-rdp"
     log_start: true
     log_end: true
-    
-
 
 - name: LAN to ESXI-1
   paloaltonetworks.panos.panos_security_rule:
@@ -20,9 +20,11 @@
     source_zone: ["lan"]
     source_ip: ["any"]
     destination_zone: ["esx1"]
-    destination_ip: ["{{ esx1 }}"]
-    application: ["vmware"]
+    destination_ip: ["{{ local_ip }}{{ esx1 }}"]
+    application: ["vmware", "ssl"]
     action: "allow"
+    location: "after"
+    existing_rule: "mgt-to-all"
     group_profile: "security"
     log_start: true
     log_end: true
@@ -35,9 +37,11 @@
     source_zone: ["lan"]
     source_ip: ["any"]
     destination_zone: ["esx2"]
-    destination_ip: ["{{ esx2 }}"]
-    application: ["vmware"]
+    destination_ip: ["{{ local_ip }}{{ esx2 }}"]
+    application: ["vmware", "ssl"]
     action: "allow"
+    location: "after"
+    existing_rule: "esxi-1"
     group_profile: "security"
     log_start: true
     log_end: true
@@ -53,6 +57,8 @@
     destination_ip: ["{{ windc }}"]
     application: ["winsrv-apps"]
     action: "allow"
+    location: "after"
+    existing_rule: "esxi-2"
     group_profile: "security"
     log_start: true
     log_end: true
