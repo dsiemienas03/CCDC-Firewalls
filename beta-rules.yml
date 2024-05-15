@@ -37,6 +37,9 @@
     # - name: Add Groups
     #   ansible.builtin.import_tasks:
     #     palo/tasks/objects/address.yml
+    - name: Add Tags
+      ansible.builtin.import_tasks:
+        palo/tasks/objects/tags.yml
 
     # Firewall rules
     - name: Add CCDC firewall Rules

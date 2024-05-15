@@ -1,0 +1,36 @@
+- name: Create tag object Critical
+  paloaltonetworks.panos.panos_tag_object:
+    provider: '{{ provider }}'
+    name: 'Crtical'
+    color: 'red'
+    comments: 'Critical'
+
+- name: Create tag object BLOCK ALL
+  paloaltonetworks.panos.panos_tag_object:
+    provider: '{{ provider }}'
+    name: 'BLOCK ALL'
+    color: 'orange'
+    comments: 'Block all traffic'
+
+- name: Create tag object ALLOW ALL
+  paloaltonetworks.panos.panos_tag_object:
+    provider: '{{ provider }}'
+    name: 'ALLOW ALL'
+    color: 'red-orange'
+    comments: 'Allow all traffic'
+
+- name: Create tag object CCDC
+  paloaltonetworks.panos.panos_tag_object:
+    provider: '{{ provider }}'
+    name: 'CCDC'
+    color: 'blue'
+    comments: 'CCDC tag'
+
+- name: Create tag object Service
+  paloaltonetworks.panos.panos_tag_object:
+    provider: '{{ provider }}'
+    name: 'Service'
+    color: turquoise blue
+    comments: 'Service tag'
+
+
