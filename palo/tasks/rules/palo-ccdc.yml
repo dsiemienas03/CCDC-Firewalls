@@ -118,5 +118,7 @@
     application: [any]
     action: deny
     group_profile: security
+    location: after
+    existing_rule: inbound-rdp
     log_start: true
     log_end: true
