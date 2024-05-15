@@ -9,9 +9,9 @@
     application: ["any"]
     service: ["any"]
     action: "allow"
+    location: "top"    
     log_start: true
     log_end: true
-    
 
 - name: Phone-out
   paloaltonetworks.panos.panos_security_rule:
@@ -22,9 +22,10 @@
     destination_zone: ["wan"]
     destination_ip: ["{{  phone_white }}"]
     action: "allow"
+    location: "after"
+    exitsting_rule: "phone-in"
     log_start: true
     log_end: true
-    
 
 - name: CCS-out
   paloaltonetworks.panos.panos_security_rule:
@@ -36,6 +37,8 @@
     destination_ip: "{{ ccs_white }}"
     application: ["any"]
     action: "allow"
+    exitsting_rule: "phone-out"
+    location: "after"
     log_start: true
     log_end: true
     
@@ -49,11 +52,11 @@
     destination_ip: ["{{  proxy_white }}"]
     application: ["web-browsing", "ssl"]
     action: "allow"
+    location: "after"
+    exitsting_rule: "ccs-out"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
-    
-
 
 - name: White-out
   paloaltonetworks.panos.panos_security_rule:
@@ -65,9 +68,11 @@
     destination_ip: ["{{  mask_white }}"]
     application: ["any"]
     action: "allow"
+    location: "after"
+    exitsting_rule: "proxy-out"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 
@@ -81,9 +86,9 @@
     destination_ip: ["any"]
     application: ["ping"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Inbound-rdp
@@ -96,9 +101,9 @@
     destination_ip: ["windows"]
     application: ["ms-rdp"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Temp block wan
@@ -111,7 +116,7 @@
     destination_ip: ["9.9.9.9"]
     application: ["any"]
     action: "deny"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     

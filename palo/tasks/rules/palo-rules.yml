@@ -8,9 +8,9 @@
     destination_ip: ["any"]
     application: ["mysql"]
     action: "deny"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 # web-browsing
@@ -24,9 +24,9 @@
     destination_ip: ["any"]
     application: ["web-browsing"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Inbound-http2
@@ -39,9 +39,9 @@
     destination_ip: ["any"]
     application: ["web-browsing"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Inbound-http3
@@ -54,9 +54,9 @@
     destination_ip: ["any"]
     application: ["web-browsing"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Inbound-http4
@@ -69,9 +69,9 @@
     destination_ip: ["any"]
     application: ["web-browsing"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Inbound-http5
@@ -100,9 +100,9 @@
     destination_ip: ["any"]
     application: ["ssh"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Inbound-ssh2
@@ -130,9 +130,9 @@
     destination_ip: ["any"]
     application: ["ssh"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 # add base rules for mail protocols
@@ -146,9 +146,9 @@
     destination_ip: ["any"]
     application: ["smtp"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Inbound-pop
@@ -161,9 +161,9 @@
     destination_ip: ["any"]
     application: ["pop3"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 
@@ -178,9 +178,9 @@
     destination_ip: ["dns_local"]
     application: ["dns"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 # Safety rule
@@ -193,9 +193,9 @@
     destination_zone: ["lan"]
     destination_ip: ["safe"]
     action: "deny"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 
@@ -210,9 +210,9 @@
     destination_ip: ["any"]
     application: ["any"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Allow all traffic out
@@ -225,9 +225,9 @@
     destination_ip: ["any"]
     application: ["any"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Add windows server rules
@@ -240,9 +240,9 @@
     destination_ip: ["winsrv"]
     application: ["winsrv-apps"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 
@@ -256,11 +256,10 @@
     destination_ip: ["any"]
     application: ["any"]
     action: "deny"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
-
 - name: Add inbound block rule
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
@@ -271,11 +270,9 @@
     destination_ip: ["any"]
     application: ["any"]
     action: "deny"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
-    
-
 
 # - name: Set initial rules as done
 #   set_fact:

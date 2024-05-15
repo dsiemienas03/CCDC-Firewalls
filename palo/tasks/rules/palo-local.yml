@@ -23,9 +23,9 @@
     destination_ip: ["{{ esx1 }}"]
     application: ["vmware"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: LAN to ESXI-2
@@ -38,9 +38,9 @@
     destination_ip: ["{{ esx2 }}"]
     application: ["vmware"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
 
 - name: Add windows server rules
@@ -53,7 +53,7 @@
     destination_ip: ["{{ windc }}"]
     application: ["winsrv-apps"]
     action: "allow"
+    group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
     
