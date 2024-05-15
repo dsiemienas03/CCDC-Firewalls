@@ -5,23 +5,17 @@
     name: "lan"
     value: "{{local_ip_mask}}"
 
-- name: Add DNS address group
+- name: Add DNS1 address
   paloaltonetworks.panos.panos_address_object:
     provider: "{{ provider }}"
     name: "dns_local"
-    value: "{{local_ip}}{{dns}}"
+    value: "{{local_ip}}{{dns1}}"
 
 - name: Add windows address object
   paloaltonetworks.panos.panos_address_object:
     provider: "{{ provider }}"
     name: "win1"
     value: "{{local_ip}}10"
-
-- name: Add tmp address object
-  paloaltonetworks.panos.panos_address_object:
-    provider: "{{ provider }}"
-    name: "tmp"
-    value: "1.1.1.1"
 
 - name: Add windows server address group
   paloaltonetworks.panos.panos_address_group:

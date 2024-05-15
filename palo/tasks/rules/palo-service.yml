@@ -164,8 +164,36 @@
 - name: Inbound-smtp2
   when: smtp2 != 0
   paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-smtp2"
+    source_zone: ["wan"]
+    source_ip: ["any"]
+    destination_zone: ["lan"]
+    destination_ip: ["{{ local_ip }}{{ smtp2 }}"]
+    application: ["smtp"]
+    action: "allow"
+    location: "before"
+    existing_rule: "inbound-safety"
+    group_profile: "security"
+    log_start: true
+    log_end: true
 
-    
+- name: Inbound-smtp3
+  when: smtp3 != 0
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-smtp3"
+    source_zone: ["wan"]
+    source_ip: ["any"]
+    destination_zone: ["lan"]
+    destination_ip: ["{{ local_ip }}{{ smtp3 }}"]
+    application: ["smtp"]
+    action: "allow"
+    location: "before"
+    existing_rule: "inbound-safety"
+    group_profile: "security"
+    log_start: true
+    log_end: true
 
 - name: Inbound-pop
   when: pop1 != 0
@@ -183,11 +211,44 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+
+- name: Inbound-pop2
+  when: pop2 != 0
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-pop2"
+    source_zone: ["wan"]
+    source_ip: ["any"]
+    destination_zone: ["lan"]
+    destination_ip: ["{{ local_ip }}{{ pop2 }}"]
+    application: ["pop3"]
+    action: "allow"
+    location: "before"
+    existing_rule: "inbound-safety"
+    group_profile: "security"
+    log_start: true
+    log_end: true
+
+- name: Inbound-pop3
+  when: pop3 != 0
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-pop3"
+    source_zone: ["wan"]
+    source_ip: ["any"]
+    destination_zone: ["lan"]
+    destination_ip: ["{{ local_ip }}{{ pop3 }}"]
+    application: ["pop3"]
+    action: "allow"
+    location: "before"
+    existing_rule: "inbound-safety"
+    group_profile: "security"
+    log_start: true
+    log_end: true
 
 
 # add rules for dns
-- name: Inbound-dns
+- name: Inbound-dns1
   when: dns1 != 0
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
