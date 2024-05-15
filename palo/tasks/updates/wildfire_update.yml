@@ -21,8 +21,8 @@
     cmd: 'show jobs id {{ (download.stdout | from_json).response.result.job }}'
   register: download_job
   until: download_job is not failed and (download_job.stdout | from_json).response.result.job.status == 'FIN'
-  retries: 20
-  delay: 30
+  retries: 75
+  delay: 5
 
 - name: Install latest content
   # Content is downloaded and ready, now install it
