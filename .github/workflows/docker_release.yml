@@ -13,7 +13,7 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  REGISTRY2: docker.com
+  # REGISTRY2: docker.com
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
   COMPARE_TAG: latest
@@ -73,7 +73,7 @@ jobs:
         with:
           images: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          # ${{ env.REGISTRY2 }}/${{ env.IMAGE_NAME }}
+      # ${{ env.REGISTRY2 }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest
             type=semver,pattern={{version}}
