@@ -52,7 +52,7 @@
 - name: Add windows server rules
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
-    rule_name: lan-win-srv
+    rule_name: lan-winsrv
     source_zone: [lan]
     source_ip: [any]
     destination_zone: [any]
