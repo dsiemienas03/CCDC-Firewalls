@@ -6,6 +6,8 @@
     source_ip: ["{{  phone_white }}"]
     destination_zone: ["lan"]
     destination_ip: ["any"]
+    application: ["any"]
+    service: ["any"]
     action: "allow"
     log_start: true
     log_end: true
