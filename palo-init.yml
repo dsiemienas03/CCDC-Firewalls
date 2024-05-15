@@ -66,7 +66,7 @@
   # Zones
     - name: Add Zones
       ansible.builtin.import_tasks:  palo/tasks/initial-config/zones.yml
-      when: config_initial_interface == "y"
+      when: config_zones == "y"
 
   # Interfaces
     - name: Add interfaces

@@ -1,5 +1,5 @@
 update_os: "n"
-update_other: "n"
+update_other: "y"
 config_initial_interface: "n"
 config_initial_groups: "n"
 config_logging: "n"
