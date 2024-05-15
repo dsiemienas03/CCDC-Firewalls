@@ -118,4 +118,5 @@
     application: [any]
     action: deny
     group_profile: security
+    log_start: true
     log_end: true
