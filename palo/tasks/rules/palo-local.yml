@@ -13,6 +13,7 @@
     existing_rule: inbound-rdp
     log_start: true
     log_end: true
+    tag_name: [local]
 
 - name: LAN to ESXI-1
   paloaltonetworks.panos.panos_security_rule:
@@ -29,6 +30,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [local]
 
 - name: LAN to ESXI-2
   paloaltonetworks.panos.panos_security_rule:
@@ -45,6 +47,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [local]
 
 - name: Add windows server rules
   paloaltonetworks.panos.panos_security_rule:
@@ -61,3 +64,4 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [local]
