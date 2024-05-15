@@ -11,7 +11,6 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    group_profile: "security"
 
 - name: Inbound-block-vmware
   paloaltonetworks.panos.panos_security_rule:
@@ -23,9 +22,9 @@
     destination_ip: ["any"]
     application: ["vmware", "vmware-update", "vmware-view"]
     action: "deny"
+    group_profile: "security"    
     log_start: true
     log_end: true
-    group_profile: "security"    
 
 # web-browsing
 - name: Inbound-http1
