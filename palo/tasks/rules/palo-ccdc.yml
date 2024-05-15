@@ -10,9 +10,11 @@
     application: [any]
     service: [any]
     action: allow
-    location: top
+    location: top # Keep it this way or your life will be ruined
     log_start: true
     log_end: true
+    tag_name: [CCDC]
+
 
 - name: Phone-out
   paloaltonetworks.panos.panos_security_rule:
@@ -27,6 +29,7 @@
     existing_rule: phone-in
     log_start: true
     log_end: true
+    tag_name: [CCDC]
 
 - name: CCS-out
   paloaltonetworks.panos.panos_security_rule:
@@ -42,6 +45,8 @@
     location: after
     log_start: true
     log_end: true
+    tag_name: [CCDC]
+
 
 - name: Proxy-out
   paloaltonetworks.panos.panos_security_rule:
@@ -58,6 +63,8 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [CCDC]
+
 
 - name: White-out
   paloaltonetworks.panos.panos_security_rule:
@@ -74,6 +81,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [CCDC]
 
 - name: Inbound-icmp
   paloaltonetworks.panos.panos_security_rule:
@@ -90,6 +98,8 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [CCDC]
+
 
 - name: Inbound-rdp
   paloaltonetworks.panos.panos_security_rule:
@@ -106,6 +116,7 @@
     group_profile: security
     log_start: true
     log_end: true
+    tag_name: [CCDC]
 
 - name: Temp block wan
   paloaltonetworks.panos.panos_security_rule:
