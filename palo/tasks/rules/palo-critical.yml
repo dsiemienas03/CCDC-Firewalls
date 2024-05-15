@@ -22,7 +22,7 @@
     destination_ip: ["any"]
     application: ["vmware", "vmware-update", "vmware-view"]
     action: "deny"
-    group_profile: "security"    
+    group_profile: "security"
     log_start: true
     log_end: true
 
@@ -56,7 +56,6 @@
     disabled: true
     log_start: true
     log_end: true
-    
 
 
 # Allow all traffic
@@ -101,7 +100,6 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
 
 - name: Allow all traffic out
   paloaltonetworks.panos.panos_security_rule:
@@ -116,7 +114,7 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+
 
 - name: Add windows server rules
   paloaltonetworks.panos.panos_security_rule:
@@ -131,7 +129,7 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+
 
 
 - name: Add outbound block rule

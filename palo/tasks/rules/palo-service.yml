@@ -15,7 +15,7 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+
 
 - name: Inbound-http2
   when: http2 != 0
@@ -50,7 +50,7 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+
 
 - name: Inbound-http4
   when: http4 != 0
@@ -68,7 +68,7 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+
 
 - name: Inbound-http5
   when: http5 != 0
@@ -86,7 +86,7 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+
 
 # add base rules for ssh
 - name: Inbound-ssh1
@@ -105,7 +105,7 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+
 
 - name: Inbound-ssh2
   when: ssh2 != 0
@@ -123,7 +123,7 @@
     log_start: true
     log_end: true
     group_profile: "security"
-    
+
 
 - name: Inbound-ssh3
   when: ssh3 != 0
@@ -141,7 +141,7 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+
 
 # add base rules for mail protocols
 - name: Inbound-smtp

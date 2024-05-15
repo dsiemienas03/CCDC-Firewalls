@@ -6,14 +6,11 @@
     provider:
       ip_address: "{{ ip_address }}"
       api_key: "{{ api_key }}"
-  collections:
-    paloaltonetworks.panos
-
   tasks:
     - name: Include User Variables
-      include_vars: vars/config.yml
+      ansible.builtin.include_vars: vars/config.yml
     - name: Include IP vars
-      include_vars: vars/ips.yml
+      ansible.builtin.include_vars: vars/ips.yml
 
     # - name: Show Facts
     #   ansible.builtin.debug:
@@ -22,7 +19,7 @@
     # - name: Pause until for commit verification
     #   ansible.builtin.pause:
     - name: Print configs
-      debug:
+      ansible.builtin.debug:
         msg:
           Update OS: "{{ update_os }}"
           Update Other: "{{ update_other }}"
@@ -36,18 +33,19 @@
           Wazuh: "{{ wazuh }}"
           Wazuh Port: "{{ wazuh_port }}"
 
-    - name: Add Groups
-      ansible.builtin.import_tasks:
-        palo/tasks/objects/address.yml
+    # - name: Add Groups
+    #   ansible.builtin.import_tasks:
+    #     palo/tasks/objects/address.yml
 
   # Firewall rules
     - name: Add CCDC firewall Rules
-      ansible.builtin.import_tasks:  
+      ansible.builtin.import_tasks:
         palo/tasks/rules/palo-rules.yml
       when: config_initial_rules == "y"
-      
+
     - name: Commit rule changes
-      ansible.builtin.import_tasks:  palo/tasks/commit.yml
+      ansible.builtin.import_tasks:
+        palo/tasks/commit.yml
       when: config_initial_rules == "y"
 
 
@@ -63,16 +61,16 @@
       listen: reboot
 
     - name: Update System Info
-      set_fact:
+      ansible.builtin.set_fact:
         system_info_json: "{{ system_info.stdout | from_json }}"
       listen: reboot
 
     - name: Update Software Version
-      set_fact:
+      ansible.builtin.set_fact:
         sw_version: "{{ system_info_json.response.result.system['sw-version'] }}"
       listen: reboot
 
     - name: Display Current Software version
-      debug:
+      ansible.builtin.debug:
         msg: "Current software version is: {{ sw_version }}"
       listen: reboot
