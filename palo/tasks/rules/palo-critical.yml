@@ -26,6 +26,22 @@
     log_start: true
     log_end: true
 
+- name: Add windows WAN block server rules
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-win-srv"
+    source_zone: ["wan"]
+    source_ip: ["any"]
+    destination_zone: ["any"]
+    destination_ip: ["{{ windc }}"]
+    application: ["winsrv-apps"]
+    action: "deny"
+    location: "after"
+    existing_rule: "inbound-vmware"
+    group_profile: "security"
+    log_start: true
+    log_end: true
+
 # Safety rule
 - name: Inbound safety
   paloaltonetworks.panos.panos_security_rule:
@@ -57,7 +73,7 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+
 
 - name: Allow all traffic out
   paloaltonetworks.panos.panos_security_rule:
