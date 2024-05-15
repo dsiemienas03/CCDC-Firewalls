@@ -1,4 +1,4 @@
-- name: Inbound-sql
+- name: Inbound-block-sql
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
     rule_name: "inbound-sql"
@@ -11,7 +11,21 @@
     group_profile: "security"
     log_start: true
     log_end: true
-    
+    group_profile: "security"
+
+- name: Inbound-block-vmware
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: "inbound-vmware"
+    source_zone: ["wan"]
+    source_ip: ["any"]
+    destination_zone: ["any"]
+    destination_ip: ["any"]
+    application: ["vmware", "vmware-update", "vmware-view"]
+    action: "deny"
+    log_start: true
+    log_end: true
+    group_profile: "security"    
 
 # web-browsing
 - name: Inbound-http1

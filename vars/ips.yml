@@ -1,5 +1,13 @@
 team_num: 70
 palo_ip: "10.{{ team_num }}.{{ team_num }}.250"
+
+# Service IPs
+http1: 50
+http2: 51
+http3: 52
+http4: 53
+http5: 54
+
 # Whiteteam IPs
 mask_white: "10.120.0.0/24"
 proxy_white: "10.120.0.200"
@@ -9,20 +17,21 @@ phone_white: "10.120.0.100"
 ccs_white: "10.120.0.111"
 
 # Critical IPs
-local_ip: "10.{{ team_num }}.{{ team_num }}."
-local_mask: "10.{{ team_num }}.{{ team_num }}.0/24"
-local_dns: "10"
+local_ip: "192.168.0."
+local_mask: "192.168.0.0/24"
+local_dns: "{{ local_ip }}10"
 esx1: "{{ local_ip }}40"
 esx2: "{{ local_ip }}45"
 windc: "{{ local_ip }}10"
 wazuh: "{{ local_ip }}246"
 wazuh_port: "1516"
+
 # Local IPs
-http1: 
-http2: 
-http3: 
-http4: 
-http5: 
+http01: "{{ local_ip }}{{ http1 }}"
+http02: "{{ local_ip }}{{ http2 }}"
+http03: "{{ local_ip }}{{ http3 }}"
+http04: "{{ local_ip }}{{ http4 }}"
+http05: "{{ local_ip }}{{ http5 }}"
 
 # Remote IPS
 remote_ip: "172.16.{{ team_num }}."
