@@ -1,0 +1,7 @@
+update_os: "n"
+update_other: "n"
+config_initial_interface: "n"
+config_initial_groups: "n"
+config_logging: "n"
+config_initial_rules: "y"
+panos_version: "11.1.1"
