@@ -77,7 +77,7 @@
     group_profile: security
     log_start: true
     log_end: true
-    tag_name: [Critical, Allow All]
+    tag_name: [Critical, ALLOW ALL]
 
 - name: Allow web outbound
   paloaltonetworks.panos.panos_security_rule:
@@ -122,7 +122,7 @@
     group_profile: security
     log_start: true
     log_end: true
-    tag_name: [Critical, Allow All]
+    tag_name: [Critical, ALLOW ALL]
 
 - name: Add windows server rules
   paloaltonetworks.panos.panos_security_rule:
