@@ -41,7 +41,7 @@
     application: [vmware, ssl]
     action: allow
     location: after
-    existing_rule: esxi-1
+    existing_rule: lan-esx1
     group_profile: security
     log_start: true
     log_end: true
@@ -57,7 +57,7 @@
     application: [winsrv-apps]
     action: allow
     location: after
-    existing_rule: esxi-2
+    existing_rule: lan-esx2
     group_profile: security
     log_start: true
     log_end: true
