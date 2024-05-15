@@ -19,5 +19,5 @@
 - name: Create Windows server service object
   paloaltonetworks.panos.panos_application_group:
     provider: "{{ provider }}"
-    name: "winsrv-apps"
+    name: "winsrv"
     value: ["ldap", "ms-ds-smb", "active-directory-base", ]

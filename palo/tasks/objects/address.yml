@@ -3,25 +3,49 @@
   paloaltonetworks.panos.panos_address_object:
     provider: "{{ provider }}"
     name: "lan"
-    value: "{{local_ip_mask}}"
+    value: "{{local_mask}}"
 
 - name: Add DNS1 address
   paloaltonetworks.panos.panos_address_object:
     provider: "{{ provider }}"
     name: "dns_local"
-    value: "{{local_ip}}{{dns1}}"
+    value: "{{ local_ip }}{{ dns1 }}"
 
 - name: Add windows address object
   paloaltonetworks.panos.panos_address_object:
     provider: "{{ provider }}"
     name: "win1"
-    value: "{{local_ip}}10"
+    value: "{{ local_ip }}10"
+
+- name: Add DC1 address object
+  paloaltonetworks.panos.panos_address_object:
+    provider: "{{ provider }}"
+    name: "win-dc1"
+    value: "{{ local_ip }}{{ dc1 }}"
+
+- name: Add DC2 address object
+  paloaltonetworks.panos.panos_address_object:
+    provider: "{{ provider }}"
+    name: "win-dc2"
+    value: "{{ local_ip }}{{ dc2 }}"
+
+- name: Add DC3 address object
+  paloaltonetworks.panos.panos_address_object:
+    provider: "{{ provider }}"
+    name: "win-dc3"
+    value: "{{ local_ip }}{{ dc3 }}"
+
+- name: Add DC4 address object
+  paloaltonetworks.panos.panos_address_object:
+    provider: "{{ provider }}"
+    name: "win-dc4"
+    value: "{{ local_ip }}{{ dc4 }}"
 
 - name: Add windows server address group
   paloaltonetworks.panos.panos_address_group:
     provider: "{{ provider }}"
-    name: "winsrv"
-    static_value: "win1"
+    name: "windc"
+    static_value: ["win-dc1", "win-dc2", "win-dc3", "win-dc4"]
 
 - name: Add windows address group
   paloaltonetworks.panos.panos_address_group:

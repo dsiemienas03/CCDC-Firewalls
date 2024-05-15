@@ -54,8 +54,8 @@
     source_zone: ["lan"]
     source_ip: ["any"]
     destination_zone: ["any"]
-    destination_ip: ["{{ windc }}"]
-    application: ["winsrv-apps"]
+    destination_ip: ["{{ win-dc1 }}"]
+    application: ["winsrv"]
     action: "allow"
     location: "after"
     existing_rule: "esxi-2"

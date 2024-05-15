@@ -37,7 +37,7 @@
     destination_ip: ["safe"]
     action: "deny"
     group_profile: "security"
-    enabled: false
+    disabled: true
     log_start: true
     log_end: true
     

@@ -2,8 +2,10 @@ team_num: 70
 palo_ip: "10.{{ team_num }}.{{ team_num }}.250"
 
 # Service IPs
-esx1: 40
-esx2: 45
+dc1: 10
+dc2: 0
+dc3: 0
+dc4: 0
 http1: 60
 http2: 61
 http3: 62
@@ -18,10 +20,9 @@ pop3: 0
 smtp1: 0
 smtp2: 0
 smtp3: 0
-dns1: 0
+dns1: 10
 dns2: 0
 dns3: 0
-
 
 # Whiteteam IPs
 mask_white: "10.120.0.0/24"

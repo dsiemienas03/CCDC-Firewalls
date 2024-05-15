@@ -36,6 +36,10 @@
           Wazuh: "{{ wazuh }}"
           Wazuh Port: "{{ wazuh_port }}"
 
+    - name: Add Groups
+      ansible.builtin.import_tasks:
+        palo/tasks/objects/address.yml
+
   # Firewall rules
     - name: Add CCDC firewall Rules
       ansible.builtin.import_tasks:  

@@ -42,7 +42,7 @@
     source_zone: ["wan"]
     source_ip: ["any"]
     destination_zone: ["lan"]
-    destination_ip: ["http03"]
+    destination_ip: ["{{ local_ip }}{{ http3 }}"]
     application: ["web-browsing"]
     action: "allow"
     location: "before"
