@@ -12,6 +12,8 @@
       ansible.builtin.include_vars: vars/config.yml
     - name: Include IP vars
       ansible.builtin.include_vars: vars/ips.yml
+    - name: Include Service vars
+      ansible.builtin.include_vars: vars/services.yml
 
     # - name: Show Facts
     #   ansible.builtin.debug:

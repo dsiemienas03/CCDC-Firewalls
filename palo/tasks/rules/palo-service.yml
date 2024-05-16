@@ -1,14 +1,14 @@
 ---
 # HTTP
-- name: Inbound-http1
-  when: http1.ip != 0 && http1.fw == palo1
+- name: Add HTTP rules
+  when: services.ip != 0 && services.fw == palo1 && services.service == http
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
-    rule_name: inbound-http1
+    rule_name: inbound-{{ services.service }}
     source_zone: [wan]
     source_ip: [any]
     destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{ http1 }}"]
+    destination_ip: ["{{ local_ip }}{{ services.ip }}"]
     application: [web-browsing]
     action: allow
     location: before
@@ -17,78 +17,11 @@
     log_start: true
     log_end: true
     tag_name: [Service]
-- name: Inbound-http2
-  when: http2.ip != 0 && http2.fw == palo1
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-http2
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{ http2 }}"]
-    application: [web-browsing]
-    action: allow
-    location: before
-    existing_rule: inbound-safety
-    group_profile: security
-    log_start: true
-    log_end: true
-    tag_name: [Service]
-- name: Inbound-http3
-  when: http3.ip != 0 && http3.fw == palo1
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-http3
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{ http3 }}"]
-    application: [web-browsing]
-    action: allow
-    location: before
-    existing_rule: inbound-safety
-    group_profile: security
-    log_start: true
-    log_end: true
-    tag_name: [Service]
-- name: Inbound-http4
-  when: http4.ip != 0 && http4.fw == palo1
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-http4
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{  http4 }}"]
-    application: [web-browsing]
-    action: allow
-    location: before
-    existing_rule: inbound-safety
-    group_profile: security
-    log_start: true
-    log_end: true
-    tag_name: [Service]
-- name: Inbound-http5
-  when: http5.ip != 0 && http5.fw == palo1
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-http5
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{ http5 }}"]
-    application: [web-browsing]
-    action: allow
-    location: before
-    existing_rule: inbound-safety
-    group_profile: security
-    log_start: true
-    log_end: true
-    tag_name: [Service]
+  loop: "{{ services }}"
 
 # SSH
 - name: Inbound-ssh1
-  when: ssh1.ip != 0 && ssh1.fw == palo1
+  when: ssh1.ip != 0 && ssh1.fw == palo1 && services.service == ssh
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
     rule_name: inbound-ssh1
@@ -104,44 +37,10 @@
     log_start: true
     log_end: true
     tag_name: [Service]
-- name: Inbound-ssh2
-  when: ssh2.ip != 0 && ssh2.fw == palo1
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-ssh2
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{ ssh2 }}"]
-    application: [ssh]
-    action: allow
-    location: before
-    existing_rule: inbound-safety
-    log_start: true
-    log_end: true
-    group_profile: security
-    tag_name: [Service]
-- name: Inbound-ssh3
-  when: ssh3.ip != 0 && ssh3.fw == palo1
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-ssh3
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{ ssh3 }}"]
-    application: [ssh]
-    action: allow
-    location: before
-    existing_rule: inbound-safety
-    group_profile: security
-    log_start: true
-    log_end: true
-    tag_name: [Service]
 
 # SMTP
 - name: Inbound-smtp1
-  when: smtp1.ip != 0 && smtp1.fw == palo1
+  when: smtp1.ip != 0 && smtp1.fw == palo1 && services.service == smtp
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
     rule_name: inbound-smtp1
@@ -157,44 +56,10 @@
     log_start: true
     log_end: true
     tag_name: [Service]
-- name: Inbound-smtp2
-  when: smtp2.ip != 0 && smtp2.fw == palo1
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-smtp2
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{ smtp2 }}"]
-    application: [smtp]
-    action: allow
-    location: before
-    existing_rule: inbound-safety
-    group_profile: security
-    log_start: true
-    log_end: true
-    tag_name: [Service]
-- name: Inbound-smtp3
-  when: smtp3.ip != 0 && smtp3.fw == palo1
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-smtp3
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{ smtp3 }}"]
-    application: [smtp]
-    action: allow
-    location: before
-    existing_rule: inbound-safety
-    group_profile: security
-    log_start: true
-    log_end: true
-    tag_name: [Service]
 
 # POP3
 - name: Inbound-pop1
-  when: pop1.ip != 0 && pop1.fw == palo1
+  when: pop1.ip != 0 && pop1.fw == palo1 && services.service == pop
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
     rule_name: inbound-pop1
@@ -210,44 +75,10 @@
     log_start: true
     log_end: true
     tag_name: [Service]
-- name: Inbound-pop2
-  when: pop2.ip != 0 && pop2.fw == palo1
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-pop2
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{ pop2 }}"]
-    application: [pop3]
-    action: allow
-    location: before
-    existing_rule: inbound-safety
-    group_profile: security
-    log_start: true
-    log_end: true
-    tag_name: [Service]
-- name: Inbound-pop3
-  when: pop3.ip != 0 && pop3.fw == palo1
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-pop3
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: ["{{ local_ip }}{{ pop3 }}"]
-    application: [pop3]
-    action: allow
-    location: before
-    existing_rule: inbound-safety
-    group_profile: security
-    log_start: true
-    log_end: true
-    tag_name: [Service]
 
 # DNS
 - name: Inbound-dns1
-  when: dns1.ip != 0 && dns1.fw == palo1
+  when: dns1.ip != 0 && dns1.fw == palo1 && services.service == dns
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
     rule_name: inbound-dns1
