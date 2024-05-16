@@ -42,8 +42,8 @@
     # - name: Add Tags
     #   ansible.builtin.import_tasks:
     #     palo/tasks/objects/tags.yml
-    # - name: Add addresses
-    #   ansible.builtin.import_tasks: palo/tasks/objects/address.yml
+    - name: Add addresses
+      ansible.builtin.import_tasks: palo/tasks/objects/address.yml
 
     # - name: Add profiles
     #   ansible.builtin.import_tasks: palo/tasks/objects/profiles.yml
@@ -54,7 +54,7 @@
 
     # Firewall rules
     - name: Add CCDC firewall Rules
-      ansible.builtin.import_tasks: palo/tasks/rules/palo-service.yml
+      ansible.builtin.import_tasks: palo/tasks/rules/palo-rules.yml
       when: config_initial_rules == "y"
 
     # - name: Commit rule changes

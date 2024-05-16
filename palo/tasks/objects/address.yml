@@ -6,61 +6,34 @@
     name: lan
     value: "{{local_mask}}"
 
-- name: Add DNS1 address
+- name: Add address objects
+  when:
+    - item.value.ip != 0
+    - item.value.fw == 0
+    - item.value.service == "dns" or
+    - item.value.service == "esx" or
+    - item.value.service == "ssh" or
+    - item.value.service == "dc"
   paloaltonetworks.panos.panos_address_object:
     provider: "{{ provider }}"
-    name: dns_local
-    value: "{{ local_ip }}{{ dns1 }}"
+    name: "{{ item.key }}"
+    value: "{{ local_ip }}{{ item.value.ip }}"
+  loop: "{{ services|dict2items }}"
 
-- name: Add windows address object
-  paloaltonetworks.panos.panos_address_object:
-    provider: "{{ provider }}"
-    name: win1
-    value: "{{ local_ip }}10"
-
-- name: Add DC1 address object
-  paloaltonetworks.panos.panos_address_object:
-    provider: "{{ provider }}"
-    name: win-dc1
-    value: "{{ local_ip }}{{ dc1 }}"
-
-- name: Add DC2 address object
-  paloaltonetworks.panos.panos_address_object:
-    provider: "{{ provider }}"
-    name: win-dc2
-    value: "{{ local_ip }}{{ dc2 }}"
-
-- name: Add DC3 address object
-  paloaltonetworks.panos.panos_address_object:
-    provider: "{{ provider }}"
-    name: win-dc3
-    value: "{{ local_ip }}{{ dc3 }}"
-
-- name: Add DC4 address object
-  paloaltonetworks.panos.panos_address_object:
-    provider: "{{ provider }}"
-    name: win-dc4
-    value: "{{ local_ip }}{{ dc4 }}"
 
 - name: Add windows server address group
   paloaltonetworks.panos.panos_address_group:
     provider: "{{ provider }}"
     name: windc
-    static_value: [win-dc1, win-dc2, win-dc3, win-dc4]
+    static_value: [dc1, dc2, dc3, dc4]
+- name: Add esx address group
+  paloaltonetworks.panos.panos_address_group:
+    provider: "{{ provider }}"
+    name: esx
+    static_value: [esx1, esx2, esx3, esx4]
 - name: Add windows address group
   paloaltonetworks.panos.panos_address_group:
     provider: "{{ provider }}"
     name: windows
     static_value: win1
 
-- name: Add client address object
-  paloaltonetworks.panos.panos_address_group:
-    provider: "{{ provider }}"
-    name: client
-    static_value: win1
-
-- name: Add safe address group
-  paloaltonetworks.panos.panos_address_group:
-    provider: "{{ provider }}"
-    name: safe
-    static_value: tmp

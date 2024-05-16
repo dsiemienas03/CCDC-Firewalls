@@ -1,4 +1,25 @@
 ---
+- name: Block WAN to esxi
+  when:
+    - item.value.ip != 0 
+    - item.value.fw == 0
+    - item.value.service == "esx"
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: inbound-{{item.key }}
+    source_zone: [wan]
+    source_ip: [any]
+    destination_zone: [lan]
+    destination_ip: ["{{ local_ip }}{{item.value.ip }}"]
+    application: [any]
+    action: deny
+    location: before
+    existing_rule: inbound-safety
+    group_profile: security
+    log_start: true
+    log_end: true
+    tag_name: [Critical]
+  loop: "{{ services|dict2items }}"
 
 - name: Add SSH rules
   when:
@@ -29,7 +50,7 @@
     - item.value.service == "smtp"
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
-    rule_name: inbound-{{item.key }}
+    rule_name: inbound-{{  item.key }}
     source_zone: [wan]
     source_ip: [any]
     destination_zone: [lan]

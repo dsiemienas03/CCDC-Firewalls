@@ -1,6 +1,6 @@
 services:
   esx1: 
-    ip: 0
+    ip: 20
     fw: 0
     service: esx
   esx2: 

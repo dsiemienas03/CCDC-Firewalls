@@ -7,7 +7,7 @@
     source_ip: [any]
     destination_zone: [any]
     destination_ip: [any]
-    application: [mysql]
+    application: [mysql, postgres, mongodb]
     action: deny
     group_profile: security
     log_start: true
@@ -21,14 +21,30 @@
     source_zone: [wan]
     source_ip: [any]
     destination_zone: [any]
-    destination_ip: [any]
+    destination_ip: [esx]
     application: [vmware, vmware-update, vmware-view]
     action: deny
     group_profile: security
     log_start: true
     log_end: true
     tag_name: [Critical]
+    disabled: true
 
+- name: Inbound block active directory
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: inbound-dc
+    source_zone: [wan]
+    source_ip: [any]
+    destination_zone: [lan]
+    destination_ip: [any]
+    application: [ldap, kerberos, ms-ds-smb, ms-ds-smbv3]
+    action: deny
+    group_profile: security
+    log_start: true
+    log_end: true
+    tag_name: [Critical]
+    
 
 - name: Allow DC access to DNS
   paloaltonetworks.panos.panos_security_rule:
@@ -47,21 +63,6 @@
     log_end: true
     tag_name: [Critical]
 
-# Safety rule
-- name: Inbound safety
-  paloaltonetworks.panos.panos_security_rule:
-    provider: "{{ provider }}"
-    rule_name: inbound-safety
-    source_zone: [wan]
-    source_ip: [any]
-    destination_zone: [lan]
-    destination_ip: [1.1.1.1]
-    action: deny
-    group_profile: security
-    disabled: true
-    log_start: true
-    log_end: true
-    tag_name: [Critical]
 
 # Allow all traffic
 - name: Allow all traffic in
@@ -170,6 +171,7 @@
     log_start: true
     log_end: true
     tag_name: [Critical]
+
 - name: Add inbound block rule
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
@@ -184,6 +186,24 @@
     log_start: true
     log_end: true
     tag_name: [Critical, BLOCK ALL]
+
+# Safety rule
+- name: Inbound safety
+  paloaltonetworks.panos.panos_security_rule:
+    provider: "{{ provider }}"
+    rule_name: inbound-safety
+    source_zone: [wan]
+    source_ip: [any]
+    destination_zone: [lan]
+    destination_ip: [1.1.1.1]
+    action: deny
+    group_profile: security
+    disabled: true
+    location: before
+    existing_rule: inbound-all
+    log_start: true
+    log_end: true
+    tag_name: [Critical]
 
 # - name: Set initial rules as done
 #   set_fact:
