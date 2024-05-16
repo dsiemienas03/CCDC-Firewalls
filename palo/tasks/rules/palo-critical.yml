@@ -55,7 +55,7 @@
     source_zone: [wan]
     source_ip: [any]
     destination_zone: [lan]
-    destination_ip: [safe]
+    destination_ip: [1.1.1.1]
     action: deny
     group_profile: security
     disabled: true
