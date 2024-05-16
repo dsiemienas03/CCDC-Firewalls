@@ -22,6 +22,7 @@ firewall:
   vars:
     ip_address: ${palo_ip}
     api_key: ${api_key}
+    fw: palo1
 EOF
 
 cat ~/.ssh/id_rsa.pub
