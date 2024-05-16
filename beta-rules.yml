@@ -42,14 +42,14 @@
     - name: Add Tags
       ansible.builtin.import_tasks:
         palo/tasks/objects/tags.yml
-    - name: Add addresses
-      ansible.builtin.import_tasks: palo/tasks/objects/address.yml
+    # - name: Add addresses
+    #   ansible.builtin.import_tasks: palo/tasks/objects/address.yml
 
-    - name: Add profiles
-      ansible.builtin.import_tasks: palo/tasks/objects/profiles.yml
+    # - name: Add profiles
+    #   ansible.builtin.import_tasks: palo/tasks/objects/profiles.yml
 
-    - name: Add services
-      ansible.builtin.import_tasks: palo/tasks/objects/service.yml
+    # - name: Add services
+    #   ansible.builtin.import_tasks: palo/tasks/objects/service.yml
 
 
     # Firewall rules
