@@ -16,7 +16,7 @@ api_key=$(curl -s -k -H "Content-Type: application/x-www-form-urlencoded" -X POS
 
 # Output to fw.yml 
 cat >> fw.yml <<EOF
-firewall:
+firewall1:
   hosts:
     ${palo_ip}:
   vars:
