@@ -2,18 +2,24 @@
 palo:
   hosts:
     palo1:
-      ip_address: 10.20.20.60
-      api_key: ""
+      ansible_host: 10.20.244.200
+      provider: 
+        ip_address: "{{ ansible_host }}"
+        api_key: ""
     palo2:
-      ip_address: 10.20.20.61
-      api_key: ""
+      ansible_host: 10.70.70.0
+      provider: 
+        ip_address: "{{ ansible_host }}"
+        api_key: ""
   vars:
     ansible_user: admin
 
 cisco:
   hosts: 
     cisco1:
+      ansible_host: 10.70.70.201
     cisco2:
+      ansible_host: 10.70.70.0
   vars:
     ansible_user: admin
     ansible_password: ""
@@ -24,11 +30,11 @@ cisco:
 esxi: 
   hosts: 
     esxi1:
-      ansible_host: 10.20.20.10
-      esxi_password: ""
+      ansible_host: 10.20.243.20
+      esxi_password: "Password1!"
     esxi2:
-      ansible_host: 10.20.20.15
-      esxi_password: ""
+      ansible_host: 10.60.60.25
+      esxi_password: "Password1!"
   vars:
     esxi_username: root 
     validate_certs: False
