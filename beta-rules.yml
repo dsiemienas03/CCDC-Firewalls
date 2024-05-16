@@ -1,6 +1,6 @@
 ---
 - name: Palo configuration
-  hosts: palo1
+  hosts: palo
   connection: local
   ignore_errors: true
   vars:
