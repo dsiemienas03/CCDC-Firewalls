@@ -1,10 +1,10 @@
 services:
   esx1: 
-    ip: 40
+    ip: 0
     fw: 0
     service: esx
   esx2: 
-    ip: 45
+    ip: 0
     fw: 0
     service: esx
   esx3: 
@@ -26,7 +26,7 @@ services:
 
   # Windows DCs
   dc1: 
-    ip: 10
+    ip: 0
     fw: 0
     service: dc
   dc2: 
@@ -68,7 +68,7 @@ services:
 
   # DNS
   dns1: 
-    ip: 10
+    ip: 0
     fw: 0
     service: dns
   dns2: 
@@ -110,7 +110,7 @@ services:
 
   # SSH
   ssh1: 
-    ip: 13
+    ip: 0
     fw: 0
     service: ssh
   ssh2: 
@@ -118,7 +118,7 @@ services:
     fw: 0
     service: ssh
   ssh3: 
-    ip: 13
+    ip: 0
     fw: 0
     service: ssh
   ssh4: 
@@ -152,7 +152,7 @@ services:
 
   # POP3
   pop1: 
-    ip: 30
+    ip: 0
     fw: 0
     service: pop
   pop2: 
@@ -174,7 +174,7 @@ services:
 
   # SMTP
   smtp1: 
-    ip: 30
+    ip: 0
     fw: 0
     service: smtp
   smtp2: 
@@ -196,162 +196,162 @@ services:
 
   # HTTP
   http1: 
-    ip: 60
+    ip: 0
     fw: 0
     service: http
   http2: 
-    ip: 61
+    ip: 0
     fw: 0
     service: http
   http3: 
-    ip: 62
+    ip: 0
     fw: 0
     service: http
   http4: 
-    ip: 63
+    ip: 0
     fw: 0
     service: http
   http5: 
-    ip: 64
+    ip: 0
     fw: 0
     service: http
   http6: 
-    ip: 65
+    ip: 0
     fw: 0
     service: http
   http7: 
-    ip: 66
+    ip: 0
     fw: 0
     service: http
   http8: 
-    ip: 67
+    ip: 0
     fw: 0
     service: http
   http9: 
-    ip: 68
+    ip: 0
     fw: 0
     service: http
   http10: 
-    ip: 69
+    ip: 0
     fw: 0
     service: http
   http11: 
-    ip: 70
+    ip: 0
     fw: 0
     service: http
   http12: 
-    ip: 71
+    ip: 0
     fw: 0
     service: http
   http13: 
-    ip: 72
+    ip: 0
     fw: 0
     service: http
   http14: 
-    ip: 73
+    ip: 0
     fw: 0
     service: http
   http15: 
-    ip: 74
+    ip: 0
     fw: 0
     service: http
   http16: 
-    ip: 75
+    ip: 0
     fw: 0
     service: http
   http17: 
-    ip: 76
+    ip: 0
     fw: 0
     service: http
   http18: 
-    ip: 77
+    ip: 0
     fw: 0
     service: http
   http19: 
-    ip: 78
+    ip: 0
     fw: 0
     service: http
   http20: 
-    ip: 79
+    ip: 0
     fw: 0
     service: http
   http21: 
-    ip: 80
+    ip: 0
     fw: 0
     service: http
   http22: 
-    ip: 81
+    ip: 0
     fw: 0
     service: http
   http23: 
-    ip: 82
+    ip: 0
     fw: 0
     service: http
   http24: 
-    ip: 83
+    ip: 0
     fw: 0
     service: http
   http25: 
-    ip: 84
+    ip: 0
     fw: 0
     service: http
   http26: 
-    ip: 85
+    ip: 0
     fw: 0
     service: http
   http27: 
-    ip: 86
+    ip: 0
     fw: 0
     service: http
   http28: 
-    ip: 87
+    ip: 0
     fw: 0
     service: http
   http29: 
-    ip: 88
+    ip: 0
     fw: 0
     service: http
   http30: 
-    ip: 89
+    ip: 0
     fw: 0
     service: http
   http31: 
-    ip: 90
+    ip: 0
     fw: 0
     service: http
   http32: 
-    ip: 91
+    ip: 0
     fw: 0
     service: http
   http33: 
-    ip: 92
+    ip: 0
     fw: 0
     service: http
   http34: 
-    ip: 93
+    ip: 0
     fw: 0
     service: http
   http35: 
-    ip: 94
+    ip: 0
     fw: 0
     service: http
   http36: 
-    ip: 95
+    ip: 0
     fw: 0
     service: http
   http37: 
-    ip: 96
+    ip: 0
     fw: 0
     service: http
   http38: 
-    ip: 97
+    ip: 0
     fw: 0
     service: http
   http39: 
-    ip: 98
+    ip: 0
     fw: 0
     service: http
   http40: 
-    ip: 99
+    ip: 0
     fw: 0
     service: http
