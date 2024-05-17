@@ -12,7 +12,8 @@ RUN set -ex ;\
     apt-get install -y --no-install-recommends \ 
     ansible \
     python3 \
-    python3-pip ;\
+    python3-pip \
+    git ;\
     apt-get purge -y --auto-remove ;\
     rm -rf /var/lib/apt/lists/*
 
