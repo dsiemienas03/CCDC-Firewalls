@@ -84,8 +84,8 @@
         cmd: show system info
       register: system_info
       until: system_info is not failed
-      retries: 100
-      delay: 10
+      retries: 200
+      delay: 2
       listen: reboot
 
     - name: Update System Info
