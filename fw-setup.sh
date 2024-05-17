@@ -2,13 +2,13 @@
 read -p "Palo IP: " palo_ip
 read -p "Palo PW: " palo_pw
 
-sudo apt update
-sudo apt install -y ansible-core python3-pip
+# sudo apt update
+# sudo apt install -y ansible-core python3-pip
 
-sudo ansible-galaxy collection install paloaltonetworks.panos
-pip install -r requirements.txt
+# sudo ansible-galaxy collection install paloaltonetworks.panos
+# pip install -r requirements.txt
 
-ssh-keygen -t rsa -b 4096 -C "ansible@localhost" -f ~/.ssh/id_rsa -N ""
+# ssh-keygen -t rsa -b 4096 -C "ansible@localhost" -f ~/.ssh/id_rsa -N ""
 
 
 #Line below came from chatgpt
@@ -16,7 +16,7 @@ api_key=$(curl -s -k -H "Content-Type: application/x-www-form-urlencoded" -X POS
 
 # Output to fw.yml 
 cat >> fw.yml <<EOF
-firewall1:
+palo:
   hosts:
     ${palo_ip}:
   vars:
