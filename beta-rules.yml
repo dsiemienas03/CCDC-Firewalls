@@ -42,8 +42,15 @@
     # - name: Add Tags
     #   ansible.builtin.import_tasks:
     #     palo/tasks/objects/tags.yml
-    - name: Add addresses
-      ansible.builtin.import_tasks: palo/tasks/objects/address.yml
+
+    - name: Update PAN-OS
+      ansible.builtin.import_tasks: palo/tasks/updates/os_update.yml
+
+    - name: Update all other software to latest version
+      ansible.builtin.import_tasks: palo/tasks/updates/all_updates.yml
+
+    # - name: Add addresses
+      # ansible.builtin.import_tasks: palo/tasks/objects/address.yml
 
     # - name: Add profiles
     #   ansible.builtin.import_tasks: palo/tasks/objects/profiles.yml

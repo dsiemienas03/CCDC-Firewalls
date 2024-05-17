@@ -38,7 +38,7 @@
     source_ip: [any]
     destination_zone: [lan]
     destination_ip: [any]
-    application: [ldap, kerberos, ms-ds-smb, ms-ds-smbv3]
+    application: [ldap, kerberos, ms-ds-smbv2, ms-ds-smbv3, ms-ds-smb-base, active-directory, msrpc]
     action: deny
     group_profile: security
     log_start: true
