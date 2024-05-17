@@ -53,7 +53,7 @@
     provider: "{{ provider }}"
     rule_name: outbound-dc-dns
     source_zone: [lan]
-    source_ip: [dc1]
+    source_ip: ["{{ local_dns }}"]
     destination_zone: [wan]
     destination_ip: [1.1.1.1]
     application: [dns]
