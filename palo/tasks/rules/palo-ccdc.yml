@@ -1,8 +1,8 @@
 ---
-- name: Phone-in # Don't ask any questions it just needs to be
+- name: Inbound phone # Don't ask any questions it just needs to be
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
-    rule_name: phone-in
+    rule_name: inbound-phone
     source_zone: [wan]
     source_ip: ["{{  phone_white }}"]
     destination_zone: [lan]
@@ -16,42 +16,42 @@
     tag_name: [CCDC]
 
 
-- name: Phone-out
+- name: Outbound phone
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
-    rule_name: phone-out
+    rule_name: outbound-phone
     source_zone: [lan]
     source_ip: [any]
     destination_zone: [wan]
     destination_ip: ["{{  phone_white }}"]
     action: allow
     location: after
-    existing_rule: phone-in
+    existing_rule: inbound-phone
     log_start: true
     log_end: true
     tag_name: [CCDC]
 
-- name: CCS-out
+- name: Outbound CCS
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
-    rule_name: ccs-out
+    rule_name: outbound-ccs
     source_zone: [any]
     source_ip: [any]
     destination_zone: [wan]
     destination_ip: "{{ ccs_white }}"
     application: [any]
     action: allow
-    existing_rule: phone-out
+    existing_rule: outbound-phone
     location: after
     log_start: true
     log_end: true
     tag_name: [CCDC]
 
 
-- name: Proxy-out
+- name: Outbound proxy
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
-    rule_name: proxy-out
+    rule_name: outbound-proxy
     source_zone: [any]
     source_ip: [any]
     destination_zone: [wan]
@@ -59,17 +59,17 @@
     application: [web-browsing, ssl]
     action: allow
     location: after
-    existing_rule: ccs-out
+    existing_rule: outbound-ccs
     group_profile: security
     log_start: true
     log_end: true
     tag_name: [CCDC]
 
 
-- name: White-out
+- name: Outbound white team
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
-    rule_name: white-out
+    rule_name: outbound-whiteteam
     source_zone: [any]
     source_ip: [any]
     destination_zone: [wan]
@@ -77,13 +77,13 @@
     application: [any]
     action: allow
     location: after
-    existing_rule: proxy-out
+    existing_rule: outbound-proxy
     group_profile: security
     log_start: true
     log_end: true
     tag_name: [CCDC]
 
-- name: Inbound-icmp
+- name: Inbound icmp
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
     rule_name: inbound-icmp
@@ -94,14 +94,14 @@
     application: [ping]
     action: allow
     location: after
-    existing_rule: white-out
+    existing_rule: outbound-whiteteam
     group_profile: security
     log_start: true
     log_end: true
     tag_name: [CCDC]
 
 
-- name: Inbound-rdp
+- name: Inbound dp
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
     rule_name: inbound-rdp
@@ -121,7 +121,7 @@
 - name: Temp block wan
   paloaltonetworks.panos.panos_security_rule:
     provider: "{{ provider }}"
-    rule_name: temp-wan
+    rule_name: temp-blockWan
     source_zone: [wan]
     source_ip: [any]
     destination_zone: [any]
