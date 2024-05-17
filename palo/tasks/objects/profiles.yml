@@ -5,7 +5,7 @@
     provider: "{{ provider }}"
     pg_name: security
     virus: default
-    file_blocking: basic file blocking
+    file_blocking: strict file blocking
     spyware: default
     vulnerability: default
     url_filtering: default

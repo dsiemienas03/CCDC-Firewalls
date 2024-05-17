@@ -9,3 +9,7 @@
 [submodule "FMCAnsible"]
   path = submodules/fmc-ansible
   url = https://github.com/CiscoDevNet/FMCAnsible.git
+
+[submodule "FTDAnsible"]
+  path = submodules/ftd-ansible
+  url = https://github.com/CiscoDevNet/FTDAnsible.git
