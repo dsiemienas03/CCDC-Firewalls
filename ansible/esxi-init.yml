@@ -1,0 +1,6 @@
+- name: ESXI configuration
+  hosts: esxi
+  connection: local
+  ignore_errors: true
+  tasks:
+  

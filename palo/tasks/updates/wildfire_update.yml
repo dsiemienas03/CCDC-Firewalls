@@ -1,5 +1,5 @@
 ---
-- name: Check for wildfire updated
+- name: Check for wildfire updates
   paloaltonetworks.panos.panos_op:
     provider: "{{ provider }}"
     cmd: request wildfire upgrade check
