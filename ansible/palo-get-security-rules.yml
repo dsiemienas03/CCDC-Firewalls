@@ -1,6 +1,6 @@
 ---
 - name: Display current config
-  hosts: firewall
+  hosts: palo
   connection: local
 
   vars:
